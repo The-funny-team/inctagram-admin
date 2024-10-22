@@ -1,12 +1,17 @@
 import React from 'react';
+import {Button} from "@leetvin/ui-kit";
+import s from './Test.module.css'
 
-const Test = () => {
+export const Test = () => {
     return (
-        <div>
+        <div className={s.wrapper}>
             TEST
-            
-        </div>
-    );
-};
+            <Button variant={'primary'}>TEST</Button>
+            <Button variant={'tertiary'}>TEST</Button>
+            <Button variant={'secondary'}>TEST</Button>
+            <Button variant={'link'}>TEST</Button>
 
-export default Test;
+        </div>
+)
+}
+
