@@ -1,0 +1,5 @@
+.wrapper {
+  background-color: var(--color-accent-700);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+}
