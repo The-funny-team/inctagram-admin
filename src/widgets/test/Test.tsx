@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@leetvin/ui-kit";
 import s from "./Test.module.scss";
 

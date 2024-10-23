@@ -1,9 +1,7 @@
 import Head from "next/head";
 
-import '@leetvin/ui-kit/dist/style.css'
-import {Test} from "@/pages/test/Test";
-
-
+import "@leetvin/ui-kit/dist/style.css";
+import { Test } from "@/widgets/test/Test";
 
 export default function Home() {
   return (
@@ -15,11 +13,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <main >
-            <Test/>
-
-        </main>
-
+      <main>
+        <Test />
+      </main>
     </>
   );
 }
