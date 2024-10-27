@@ -7,7 +7,8 @@
     "build": "next build",
     "build:production": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
+    "format": "prettier --write src"
   },
   "dependencies": {
     "@leetvin/ui-kit": "^0.0.1",
@@ -15,16 +16,20 @@
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
-    "react-redux": "^9.1.2",
-    "sass": "^1.80.3"
+    "react-redux": "^9.1.2"
   },
   "devDependencies": {
+    "@it-incubator/eslint-config": "^1.0.3",
+    "@it-incubator/prettier-config": "^0.1.2",
+    "@it-incubator/stylelint-config": "^2.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
     "prettier": "^3.3.3",
+    "sass": "^1.80.3",
+    "stylelint": "^16.10.0",
     "typescript": "^5"
   }
 }
