@@ -1,5 +1,5 @@
-import type { AppProps } from 'next/app'
+import { App } from '@/application/App'
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+import '../application/styles/index.scss'
+
+export default App
