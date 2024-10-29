@@ -11,7 +11,7 @@
     "format": "prettier --write src"
   },
   "dependencies": {
-    "@leetvin/ui-kit": "^0.0.1",
+    "@funnyteam/ui-kit": "^0.0.8",
     "@reduxjs/toolkit": "^2.3.0",
     "next": "14.2.15",
     "react": "^18",

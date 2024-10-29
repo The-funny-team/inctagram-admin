@@ -1,8 +1,7 @@
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 import { Test } from '@/widgets/test/Test'
 
-import '@leetvin/ui-kit/dist/style.css'
-
+import '@funnyteam/ui-kit/style.css'
 export default function Home() {
   return (
     <>
