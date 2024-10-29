@@ -1,5 +1,5 @@
 import { App } from '@/application/App'
 
-import '../application/styles/index.scss'
+import '@funnyteam/ui-kit/style.css'
 
 export default App
