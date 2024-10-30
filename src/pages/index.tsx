@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 
 import { getRootLayout } from '@/shared/layouts'
-import { HeadMeta } from '@/shared/ui/HeadMeta'
 import { useRouter } from 'next/router'
 
 import '@funnyteam/ui-kit/style.css'
