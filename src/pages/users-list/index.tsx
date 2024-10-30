@@ -1,11 +1,12 @@
+import { getNavbarLayout } from '@/shared/layouts/NavBarLayout/NavBarLayout'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 
-const SignInPage = () => (
+const UsersListPage = () => (
   <>
     <HeadMeta title={'Users list'} />
-
     <main>Users list</main>
   </>
 )
 
-export default SignInPage
+UsersListPage.getLayout = getNavbarLayout
+export default UsersListPage

@@ -1,0 +1,8 @@
+export { FilledPaymentIcon } from './FilledPaymentIcon'
+export { FilledPostsIcon } from './FilledPostsIcon'
+export { FilledStatisticIcon } from './FilledStatisticIcon'
+export { FilledUserIcon } from './FilledUserIcon'
+export { PaymentIcon } from './PaymentIcon'
+export { PostsIcon } from './PostsIcon'
+export { StatisticIcon } from './StatisticIcon'
+export { UserIcon } from './UserIcon'
