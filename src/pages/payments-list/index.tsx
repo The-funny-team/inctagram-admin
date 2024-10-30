@@ -3,8 +3,7 @@ import { HeadMeta } from '@/shared/ui/HeadMeta'
 
 const PaymentsListPage = () => (
   <>
-    <HeadMeta title={'Users list'} />
-
+    <HeadMeta title={'Payments list'} />
     <main>Payments list</main>
   </>
 )

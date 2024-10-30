@@ -3,8 +3,7 @@ import { HeadMeta } from '@/shared/ui/HeadMeta'
 
 const StatisticListPage = () => (
   <>
-    <HeadMeta title={'Users list'} />
-
+    <HeadMeta title={'Statistic'} />
     <main>Statistic</main>
   </>
 )
