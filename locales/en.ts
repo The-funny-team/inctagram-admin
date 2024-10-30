@@ -7,5 +7,10 @@ export const en = {
       usersList: 'Users list',
     },
   },
+  signIn: {
+    emailLabel: 'Email',
+    passwordLabel: 'Password',
+    title: 'Sign In',
+  },
 }
 export type LocaleType = typeof en
