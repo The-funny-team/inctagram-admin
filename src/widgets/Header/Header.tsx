@@ -52,9 +52,17 @@ export const Header = ({ className, ...restProps }: ComponentPropsWithoutRef<'he
   return (
     <header className={classNames.header} {...restProps}>
       <div className={classNames.container}>
-        <Typography as={Link} className={classNames.link} href={'/'} variant={'large'}>
-          Inctagram
-        </Typography>
+        <div>
+          <Typography as={Link} className={classNames.link} href={'/'} variant={'large'}>
+            Inctagram
+          </Typography>
+          <Typography as={'span'} variant={'smallText'}>
+            Super
+          </Typography>
+          <Typography as={'span'} variant={'semiBoldSmallText'}>
+            Admin
+          </Typography>
+        </div>
         <div className={classNames.headerDashboard}>
           <Select
             onValueChange={changeLangHandler}
