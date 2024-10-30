@@ -18,12 +18,7 @@ const Page = () => {
     }
   }, [auth, router])
 
-  return (
-    <>
-      <HeadMeta title={'Home page'} />
-      <main>Welcome! This is new app!</main>
-    </>
-  )
+  return null
 }
 
 Page.getLayout = getRootLayout
