@@ -5,7 +5,9 @@ import { SignIn } from '@/widgets/SignIn/ui/SignIn'
 const SignInPage = () => (
   <>
     <HeadMeta title={'Sign In'} />
-    <SignIn />
+    <main>
+      <SignIn />
+    </main>
   </>
 )
 
