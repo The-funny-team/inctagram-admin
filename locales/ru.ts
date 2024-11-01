@@ -14,4 +14,7 @@ export const ru: LocaleType = {
     passwordLabel: 'Пароль',
     title: 'Войти',
   },
+  validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
+  },
 }

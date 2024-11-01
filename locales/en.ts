@@ -12,5 +12,8 @@ export const en = {
     passwordLabel: 'Password',
     title: 'Sign In',
   },
+  validation: {
+    emailVerification: 'The email must match the format example@example.com',
+  },
 }
 export type LocaleType = typeof en

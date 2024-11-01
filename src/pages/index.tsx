@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import '@funnyteam/ui-kit/style.css'
 
 const Page = () => {
-  const auth = false // temporary variable
+  const auth = true // temporary variable
   const router = useRouter()
 
   useEffect(() => {
