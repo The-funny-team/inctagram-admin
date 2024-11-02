@@ -7,5 +7,15 @@ export const en = {
       usersList: 'Users list',
     },
   },
+  pages: {
+    usersList: {
+      tableHead: {
+        dateAdded: 'Date added',
+        profileLink: 'Profile Link',
+        userId: 'User ID',
+        userName: 'Username',
+      },
+    },
+  },
 }
 export type LocaleType = typeof en

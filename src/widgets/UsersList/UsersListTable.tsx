@@ -23,16 +23,17 @@ type PropsType = {
 
 export const UsersListTable = ({ users }: PropsType) => {
   const { text } = useTranslation()
+  const t = text.pages.usersList.tableHead
 
   return (
     <div className={s.tableWrapper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeadCell>User ID</TableHeadCell>
-            <TableHeadCell>Username</TableHeadCell>
-            <TableHeadCell>Profile link</TableHeadCell>
-            <TableHeadCell>Date added</TableHeadCell>
+            <TableHeadCell>{t.userId}</TableHeadCell>
+            <TableHeadCell>{t.userName}</TableHeadCell>
+            <TableHeadCell>{t.profileLink}</TableHeadCell>
+            <TableHeadCell>{t.dateAdded}</TableHeadCell>
             <TableHeadCell></TableHeadCell>
           </TableRow>
         </TableHead>
