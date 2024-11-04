@@ -9,4 +9,16 @@ export const ru: LocaleType = {
       usersList: 'Пользователи',
     },
   },
+  modal: {
+    banUserModal: {
+      advertisingPlacement: 'Размещение рекламы',
+      anotherReason: 'Другая причина',
+      badBehavior: 'Плохое поведение',
+      getQuestion: (name: string) => `Вы уверены, что хотите заблокировать пользователя ${name}?`,
+      reasonForBan: 'Причина блокировки',
+      title: 'Заблокировать пользователя',
+    },
+    noButton: 'Нет',
+    yesButton: 'Да',
+  },
 }
