@@ -14,7 +14,7 @@ export const ru: LocaleType = {
       advertisingPlacement: 'Размещение рекламы',
       anotherReason: 'Другая причина',
       badBehavior: 'Плохое поведение',
-      getQuestion: (name: string) => `Вы уверены, что хотите заблокировать пользователя ${name}?`,
+      getQuestion: `Вы уверены, что хотите заблокировать пользователя <1></1>`,
       reasonForBan: 'Причина блокировки',
       title: 'Заблокировать пользователя',
     },

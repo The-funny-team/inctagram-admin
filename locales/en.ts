@@ -12,7 +12,7 @@ export const en = {
       advertisingPlacement: 'Advertising placement',
       anotherReason: 'Another reason',
       badBehavior: 'Bad behavior',
-      getQuestion: (name: string) => `Are you sure to ban this user, ${name}?`,
+      getQuestion: `Are you sure to ban this user, <1></1>`,
       reasonForBan: 'Reason for ban',
       title: 'Ban user',
     },
