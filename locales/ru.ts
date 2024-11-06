@@ -21,4 +21,11 @@ export const ru: LocaleType = {
     noButton: 'Нет',
     yesButton: 'Да',
   },
+  usersList: {
+    dropdown: {
+      banUser: 'Запрет доступа в системе',
+      deleteUser: 'Удалить пользователя',
+      moreInfo: 'Дополнительная информация',
+    },
+  },
 }

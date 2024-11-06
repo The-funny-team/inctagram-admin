@@ -19,5 +19,12 @@ export const en = {
     noButton: 'No',
     yesButton: 'Yes',
   },
+  usersList: {
+    dropdown: {
+      banUser: 'Ban in the system',
+      deleteUser: 'Delete User',
+      moreInfo: 'More Information',
+    },
+  },
 }
 export type LocaleType = typeof en
