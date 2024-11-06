@@ -1,5 +1,8 @@
-import { UserType, UsersListTable } from '@/widgets/UsersList/UsersListTable'
-import { Input, Select } from '@funnyteam/ui-kit'
+import { useState } from 'react'
+
+import { Input, Pagination, Select, TableEmpty } from '@funnyteam/ui-kit'
+
+import { UserType, UsersListTable } from './UsersListTable'
 
 const usersList: UserType[] = [
   {
@@ -23,11 +26,32 @@ const usersList: UserType[] = [
 ]
 
 const selectOptions = [
+  { label: 'Not selected', value: 'all' },
   { label: 'Blocked', value: 'blocked' },
   { label: 'Not Blocked', value: 'notBlocked' },
 ]
 
+const PAGINATION_OPTIONS = [
+  { label: '10', value: '10' },
+  { label: '25', value: '25' },
+  { label: '50', value: '50' },
+  { label: '100', value: '100' },
+]
+
 export const UsersList = () => {
+  const [usersStatus, setUsersStatus] = useState<string>('all')
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [pageSize, setPageSize] = useState<number>(10)
+
+  const handlePageSize = (pageSize: string) => {
+    setPageSize(+pageSize)
+    setCurrentPage(1)
+  }
+
+  const handleIsBlocked = (value: string) => {
+    setUsersStatus(prevState => value)
+  }
+
   return (
     <>
       <main>
@@ -43,9 +67,25 @@ export const UsersList = () => {
             <div style={{ maxWidth: '620px', width: '100%' }}>
               <Input style={{ width: '100%' }} type={'search'} />
             </div>
-            <Select options={selectOptions} placeholder={'Not selected'} />
+            <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
           </div>
-          <UsersListTable users={usersList} />
+          {usersList.length ? (
+            <div>
+              <UsersListTable users={usersList} />
+              <div style={{ paddingTop: '35px' }}>
+                <Pagination
+                  currentPage={currentPage}
+                  onChangePage={setCurrentPage}
+                  onValueChange={handlePageSize}
+                  options={PAGINATION_OPTIONS}
+                  pageSize={pageSize}
+                  totalCount={usersList.length}
+                />
+              </div>
+            </div>
+          ) : (
+            <TableEmpty message={'There is no users'} />
+          )}
         </div>
       </main>
     </>
