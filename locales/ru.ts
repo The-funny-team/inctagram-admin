@@ -20,5 +20,12 @@ export const ru: LocaleType = {
     },
     noButton: 'Нет',
     yesButton: 'Да',
+ },
+  signIn: {
+    emailLabel: 'Электронная почта',
+    passwordLabel: 'Пароль',
+    title: 'Войти',
   },
+  validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
 }

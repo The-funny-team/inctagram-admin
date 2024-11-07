@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
+import { ROUTES_URL } from '@/shared/const'
 import { getRootLayout } from '@/shared/layouts'
-import { HeadMeta } from '@/shared/ui/HeadMeta'
 import { useRouter } from 'next/router'
 
 import '@funnyteam/ui-kit/style.css'
@@ -12,18 +12,13 @@ const Page = () => {
 
   useEffect(() => {
     if (!auth) {
-      void router.push('/sign-in')
+      void router.push(ROUTES_URL.SIGN_IN)
     } else {
-      void router.push('/users-list')
+      void router.push(ROUTES_URL.USERS_LIST)
     }
   }, [auth, router])
 
-  return (
-    <>
-      <HeadMeta title={'Home page'} />
-      <main>Welcome! This is new app!</main>
-    </>
-  )
+  return null
 }
 
 Page.getLayout = getRootLayout
