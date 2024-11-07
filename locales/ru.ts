@@ -9,6 +9,18 @@ export const ru: LocaleType = {
       usersList: 'Пользователи',
     },
   },
+  modal: {
+    banUserModal: {
+      advertisingPlacement: 'Размещение рекламы',
+      anotherReason: 'Другая причина',
+      badBehavior: 'Плохое поведение',
+      getQuestion: `Вы уверены, что хотите заблокировать пользователя <1></1>`,
+      reasonForBan: 'Причина блокировки',
+      title: 'Заблокировать пользователя',
+    },
+    noButton: 'Нет',
+    yesButton: 'Да',
+ },
   signIn: {
     emailLabel: 'Электронная почта',
     passwordLabel: 'Пароль',
@@ -16,5 +28,4 @@ export const ru: LocaleType = {
   },
   validation: {
     emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
-  },
 }

@@ -11,7 +11,7 @@
     "format": "prettier --write src"
   },
   "dependencies": {
-    "@funnyteam/ui-kit": "^0.0.9",
+    "@funnyteam/ui-kit": "^0.0.11",
     "@hookform/resolvers": "^3.9.1",
     "@reduxjs/toolkit": "^2.3.0",
     "clsx": "^2.1.1",
