@@ -19,12 +19,28 @@ export const en = {
     noButton: 'No',
     yesButton: 'Yes',
   },
-  usersList: {
-    dropdown: {
-      banUser: 'Ban in the system',
-      deleteUser: 'Delete User',
-      moreInfo: 'More Information',
+  pages: {
+    signIn: {
+      emailLabel: 'Email',
+      passwordLabel: 'Password',
+      title: 'Sign In',
     },
+    usersList: {
+      tableHead: {
+        dateAdded: 'Date added',
+        profileLink: 'Profile Link',
+        userId: 'User ID',
+        userName: 'Username',
+      },
+        dropdown: {
+            banUser: 'Ban in the system',
+            deleteUser: 'Delete User',
+            moreInfo: 'More Information',
+        },
+    },
+  },
+  validation: {
+    emailVerification: 'The email must match the format example@example.com',
   },
 }
 export type LocaleType = typeof en

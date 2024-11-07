@@ -1,3 +1,4 @@
+
 import { LocaleType } from './en'
 
 export const ru: LocaleType = {
@@ -21,11 +22,27 @@ export const ru: LocaleType = {
     noButton: 'Нет',
     yesButton: 'Да',
   },
-  usersList: {
-    dropdown: {
-      banUser: 'Запрет доступа в системе',
-      deleteUser: 'Удалить пользователя',
-      moreInfo: 'Дополнительная информация',
+  pages: {
+    signIn: {
+      emailLabel: 'Электронная почта',
+      passwordLabel: 'Пароль',
+      title: 'Войти',
     },
+    usersList: {
+      tableHead: {
+        dateAdded: 'Дата добавления',
+        profileLink: 'Ссылка на профиль',
+        userId: 'ID пользователя',
+        userName: 'Имя пользователя',
+      },
+        dropdown: {
+            banUser: 'Запрет доступа в системе',
+            deleteUser: 'Удалить пользователя',
+            moreInfo: 'Дополнительная информация',
+        },
+    },
+  },
+  validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
   },
 }

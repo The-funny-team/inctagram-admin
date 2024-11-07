@@ -12,13 +12,16 @@
   },
   "dependencies": {
     "@funnyteam/ui-kit": "^0.0.11",
+    "@hookform/resolvers": "^3.9.1",
     "@reduxjs/toolkit": "^2.3.0",
     "clsx": "^2.1.1",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.1",
     "react-redux": "^9.1.2",
-    "react-toastify": "^10.0.6"
+    "react-toastify": "^10.0.6",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.3",
