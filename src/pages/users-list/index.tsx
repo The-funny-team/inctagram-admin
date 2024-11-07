@@ -5,7 +5,6 @@ import { UsersList } from '@/widgets'
 const UsersListPage = () => (
   <>
     <HeadMeta title={'Users list'} />
-    {/*<main>Users list</main>*/}
     <UsersList />
   </>
 )
