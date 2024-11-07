@@ -7,6 +7,24 @@ export const en = {
       usersList: 'Users list',
     },
   },
+  pages: {
+    usersList: {
+      tableHead: {
+        dateAdded: 'Date added',
+        profileLink: 'Profile Link',
+        userId: 'User ID',
+        userName: 'Username',
+      },
+    },
+    signIn: {
+    emailLabel: 'Email',
+    passwordLabel: 'Password',
+    title: 'Sign In',
+    validation: {
+    emailVerification: 'The email must match the format example@example.com',
+    },
+  },
+  },
   modal: {
     banUserModal: {
       advertisingPlacement: 'Advertising placement',
@@ -19,12 +37,5 @@ export const en = {
     noButton: 'No',
     yesButton: 'Yes',
 },
-  signIn: {
-    emailLabel: 'Email',
-    passwordLabel: 'Password',
-    title: 'Sign In',
-  },
-  validation: {
-    emailVerification: 'The email must match the format example@example.com',
-}
+  
 export type LocaleType = typeof en

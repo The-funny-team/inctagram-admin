@@ -9,6 +9,24 @@ export const ru: LocaleType = {
       usersList: 'Пользователи',
     },
   },
+  pages: {
+    usersList: {
+      tableHead: {
+        dateAdded: 'Дата добавления',
+        profileLink: 'Ссылка на профиль',
+        userId: 'ID пользователя',
+        userName: 'Имя пользователя',
+      },
+    },
+      signIn: {
+    emailLabel: 'Электронная почта',
+    passwordLabel: 'Пароль',
+    title: 'Войти',
+      validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
+},
+  },
+  },
   modal: {
     banUserModal: {
       advertisingPlacement: 'Размещение рекламы',
@@ -21,11 +39,4 @@ export const ru: LocaleType = {
     noButton: 'Нет',
     yesButton: 'Да',
  },
-  signIn: {
-    emailLabel: 'Электронная почта',
-    passwordLabel: 'Пароль',
-    title: 'Войти',
-  },
-  validation: {
-    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
-}
+ 
