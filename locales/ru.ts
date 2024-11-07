@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/namespace
 import { LocaleType } from './en'
 
 export const ru: LocaleType = {
@@ -8,24 +9,6 @@ export const ru: LocaleType = {
       statistics: 'Статистика',
       usersList: 'Пользователи',
     },
-  },
-  pages: {
-    usersList: {
-      tableHead: {
-        dateAdded: 'Дата добавления',
-        profileLink: 'Ссылка на профиль',
-        userId: 'ID пользователя',
-        userName: 'Имя пользователя',
-      },
-    },
-      signIn: {
-    emailLabel: 'Электронная почта',
-    passwordLabel: 'Пароль',
-    title: 'Войти',
-      validation: {
-    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
-},
-  },
   },
   modal: {
     banUserModal: {
@@ -38,5 +21,23 @@ export const ru: LocaleType = {
     },
     noButton: 'Нет',
     yesButton: 'Да',
- },
- 
+  },
+  pages: {
+    signIn: {
+      emailLabel: 'Электронная почта',
+      passwordLabel: 'Пароль',
+      title: 'Войти',
+    },
+    usersList: {
+      tableHead: {
+        dateAdded: 'Дата добавления',
+        profileLink: 'Ссылка на профиль',
+        userId: 'ID пользователя',
+        userName: 'Имя пользователя',
+      },
+    },
+  },
+  validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
+  },
+}

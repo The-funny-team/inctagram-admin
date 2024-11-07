@@ -9,7 +9,7 @@ import s from './SignIn.module.scss'
 
 export const SignIn = () => {
   const { text } = useTranslation()
-  const t = text.signIn
+  const t = text.pages.signIn
 
   const {
     control,
