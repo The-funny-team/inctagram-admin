@@ -18,5 +18,25 @@ export const ru: LocaleType = {
         userName: 'Имя пользователя',
       },
     },
+      signIn: {
+    emailLabel: 'Электронная почта',
+    passwordLabel: 'Пароль',
+    title: 'Войти',
+      validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
+},
   },
-}
+  },
+  modal: {
+    banUserModal: {
+      advertisingPlacement: 'Размещение рекламы',
+      anotherReason: 'Другая причина',
+      badBehavior: 'Плохое поведение',
+      getQuestion: `Вы уверены, что хотите заблокировать пользователя <1></1>`,
+      reasonForBan: 'Причина блокировки',
+      title: 'Заблокировать пользователя',
+    },
+    noButton: 'Нет',
+    yesButton: 'Да',
+ },
+ 
