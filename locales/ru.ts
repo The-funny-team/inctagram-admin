@@ -9,4 +9,12 @@ export const ru: LocaleType = {
       usersList: 'Пользователи',
     },
   },
+  signIn: {
+    emailLabel: 'Электронная почта',
+    passwordLabel: 'Пароль',
+    title: 'Войти',
+  },
+  validation: {
+    emailVerification: 'Электронная почта должна соответствовать формату example@example.com',
+  },
 }
