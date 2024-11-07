@@ -1,29 +1,11 @@
 import { useState } from 'react'
 
+import { useDebounce } from '@/shared/lib/hooks'
 import { Input, Pagination, Select, TableEmpty } from '@funnyteam/ui-kit'
 
-import { UserType, UsersListTable } from './UsersListTable'
+import s from './UsersList.module.scss'
 
-const usersList: UserType[] = [
-  {
-    dateAdded: '2022-12-14T18:57:56.462Z',
-    profileLink: 'https://google.com',
-    userId: '132',
-    userName: 'Aleksandr',
-  },
-  {
-    dateAdded: '2024-10-28T18:57:56.462Z',
-    profileLink: 'https://facebook.com',
-    userId: '133',
-    userName: 'Nikolay',
-  },
-  {
-    dateAdded: '2022-07-23T18:57:56.462Z',
-    profileLink: 'https://instagram.com',
-    userId: '131',
-    userName: 'Vitaliy',
-  },
-]
+import { UserType, UsersListTable } from './UsersListTable'
 
 const selectOptions = [
   { label: 'Not selected', value: 'all' },
@@ -39,9 +21,11 @@ const PAGINATION_OPTIONS = [
 ]
 
 export const UsersList = () => {
+  const [usersList, setUsersList] = useState<UserType[]>([])
   const [usersStatus, setUsersStatus] = useState<string>('all')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(10)
+  const [search, setSearch] = useState<string>('')
 
   const handlePageSize = (pageSize: string) => {
     setPageSize(+pageSize)
@@ -51,28 +35,25 @@ export const UsersList = () => {
   const handleIsBlocked = (value: string) => {
     setUsersStatus(prevState => value)
   }
+  const debounceValue = useDebounce(search, 500)
+  const handleSearch = (value: string) => {
+    setSearch(prevState => value)
+  }
 
   return (
     <>
       <main>
-        <div style={{ padding: '60px 0 0 24px' }}>
-          <div
-            style={{
-              alignItems: 'center',
-              display: 'flex',
-              gap: '95px',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div style={{ maxWidth: '620px', width: '100%' }}>
-              <Input style={{ width: '100%' }} type={'search'} />
+        <div className={s.wrapper}>
+          <div className={s.filters}>
+            <div className={s.filtersInput}>
+              <Input onValueChange={handleSearch} type={'search'} value={search} />
             </div>
             <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
           </div>
           {usersList.length ? (
             <div>
               <UsersListTable users={usersList} />
-              <div style={{ paddingTop: '35px' }}>
+              <div className={s.pagination}>
                 <Pagination
                   currentPage={currentPage}
                   onChangePage={setCurrentPage}

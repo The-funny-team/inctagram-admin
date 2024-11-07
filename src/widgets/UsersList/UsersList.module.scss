@@ -1,3 +1,19 @@
+.wrapper {
+  padding: 60px 0 0 24px;
+}
+
+.filters {
+  align-items: center;
+  display: flex;
+  gap: 95px;
+  justify-content: space-between;
+}
+
+.filtersInput {
+  max-width: 620px;
+  width: 100%;
+}
+
 .tableWrapper {
   padding-top: 36px;
 
@@ -5,4 +21,8 @@
   td {
     padding: 12px 24px;
   }
+}
+
+.pagination {
+  padding-top: 36px;
 }
