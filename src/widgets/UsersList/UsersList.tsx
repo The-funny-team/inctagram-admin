@@ -1,6 +1,10 @@
 import { useState } from 'react'
 
+import { BanIcon } from '@/shared/assets/icons/dropdown-icons/BanIcon'
+import { DeleteUserIcon } from '@/shared/assets/icons/dropdown-icons/DeleteUserIcon'
+import { DotsIcon } from '@/shared/assets/icons/dropdown-icons/DotsIcon'
 import { useDebounce } from '@/shared/lib/hooks'
+import { UsersListDropdown } from '@/widgets/UsersListDropdown'
 import { Input, Pagination, Select, TableEmpty } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
@@ -42,6 +46,10 @@ export const UsersList = () => {
 
   return (
     <>
+      <DotsIcon />
+      <DeleteUserIcon />
+      <BanIcon />
+      <UsersListDropdown userId={25} />
       <main>
         <div className={s.wrapper}>
           <div className={s.filters}>
