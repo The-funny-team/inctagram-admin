@@ -1,4 +1,3 @@
-
 import { LocaleType } from './en'
 
 export const ru: LocaleType = {
@@ -29,17 +28,17 @@ export const ru: LocaleType = {
       title: 'Войти',
     },
     usersList: {
+      dropdown: {
+        banUser: 'Запрет доступа в системе',
+        deleteUser: 'Удалить пользователя',
+        moreInfo: 'Дополнительная информация',
+      },
       tableHead: {
         dateAdded: 'Дата добавления',
         profileLink: 'Ссылка на профиль',
         userId: 'ID пользователя',
         userName: 'Имя пользователя',
       },
-        dropdown: {
-            banUser: 'Запрет доступа в системе',
-            deleteUser: 'Удалить пользователя',
-            moreInfo: 'Дополнительная информация',
-        },
     },
   },
   validation: {

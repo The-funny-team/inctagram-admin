@@ -26,17 +26,17 @@ export const en = {
       title: 'Sign In',
     },
     usersList: {
+      dropdown: {
+        banUser: 'Ban in the system',
+        deleteUser: 'Delete User',
+        moreInfo: 'More Information',
+      },
       tableHead: {
         dateAdded: 'Date added',
         profileLink: 'Profile Link',
         userId: 'User ID',
         userName: 'Username',
       },
-        dropdown: {
-            banUser: 'Ban in the system',
-            deleteUser: 'Delete User',
-            moreInfo: 'More Information',
-        },
     },
   },
   validation: {
