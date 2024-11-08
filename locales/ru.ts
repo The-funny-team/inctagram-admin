@@ -18,6 +18,11 @@ export const ru: LocaleType = {
       reasonForBan: 'Причина блокировки',
       title: 'Заблокировать пользователя',
     },
+    deleteUserModal: {
+      getQuestion: (userName: string) =>
+        `Вы уверенны, что хотите удалить пользователя ${userName}?`,
+      title: 'Удалить пользователя',
+    },
     noButton: 'Нет',
     yesButton: 'Да',
   },

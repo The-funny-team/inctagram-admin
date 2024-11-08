@@ -1,0 +1,20 @@
+.rootDeleteModal {
+  width: 378px;
+  height: auto;
+
+  .logOutRoot {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    justify-content: flex-start;
+  }
+
+  .buttonsBlock {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      width: 130px;
+    }
+  }
+}
