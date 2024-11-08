@@ -26,6 +26,11 @@ export const en = {
       title: 'Sign In',
     },
     usersList: {
+      dropdown: {
+        banUser: 'Ban in the system',
+        deleteUser: 'Delete User',
+        moreInfo: 'More Information',
+      },
       tableHead: {
         dateAdded: 'Date added',
         profileLink: 'Profile Link',
@@ -38,5 +43,4 @@ export const en = {
     emailVerification: 'The email must match the format example@example.com',
   },
 }
-
 export type LocaleType = typeof en
