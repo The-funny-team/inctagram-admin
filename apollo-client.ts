@@ -5,6 +5,7 @@ import { getMainDefinition } from '@apollo/client/utilities'
 // @ts-ignore
 // eslint-disable-next-line import/no-unresolved
 import { createClient } from 'graphql-ws'
+import * as process from 'process'
 
 const httpLink = createHttpLink({
   uri: 'https://inctagram.work/api/v1/graphql',
@@ -17,8 +18,8 @@ const wsLink = new GraphQLWsLink(
 )
 
 const getCredentials = () => {
-  const username = ''
-  const password = ''
+  const username = process.env.NEXT_PUBLIC_USER_NAME
+  const password = process.env.NEXT_PUBLIC_PASSWORD
 
   return username && password ? btoa(`${username}:${password}`) : null
 }
