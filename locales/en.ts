@@ -16,6 +16,10 @@ export const en = {
       reasonForBan: 'Reason for ban',
       title: 'Ban user',
     },
+    deleteUserModal: {
+      getQuestion: (userName: string) => `Are you sure to delete user ${userName}?`,
+      title: 'Delete user',
+    },
     noButton: 'No',
     yesButton: 'Yes',
   },
