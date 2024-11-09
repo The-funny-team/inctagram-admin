@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "codegen:watch": "graphql-codegen --watch",
     "dev": "next dev",
     "build": "next build",
     "build:production": "next build",
@@ -11,10 +12,18 @@
     "format": "prettier --write src"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.9",
     "@funnyteam/ui-kit": "^0.0.11",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/client-preset": "^4.5.0",
+    "@graphql-codegen/near-operation-file-preset": "^3.0.0",
+    "@graphql-codegen/typescript": "^4.1.1",
+    "@graphql-codegen/typescript-operations": "^4.3.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2",
     "@hookform/resolvers": "^3.9.1",
     "@reduxjs/toolkit": "^2.3.0",
     "clsx": "^2.1.1",
+    "graphql": "^16.9.0",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",

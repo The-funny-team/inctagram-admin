@@ -4,6 +4,9 @@ import type { AppProps } from 'next/app'
 import type { ReactElement, ReactNode } from 'react'
 
 import { WithStore } from '@/application/providers/WithStore'
+import { ApolloProvider } from '@apollo/client'
+
+import client from '../../apollo-client'
 
 export type NextPageWithLayout<P = {}, IP = P> = {
   getLayout?: (page: ReactElement) => ReactNode
@@ -17,5 +20,9 @@ export const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? (page => page)
 
-  return <WithStore>{getLayout(<Component {...pageProps} />)}</WithStore>
+  return (
+    <WithStore>
+      <ApolloProvider client={client}>{getLayout(<Component {...pageProps} />)}</ApolloProvider>
+    </WithStore>
+  )
 }
