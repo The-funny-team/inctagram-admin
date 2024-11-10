@@ -1,6 +1,6 @@
 import { getNavbarLayout } from '@/shared/layouts/NavBarLayout/NavBarLayout'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
-import { UsersList } from '@/widgets'
+import { UsersList } from '@/widgets/UsersList'
 
 const UsersListPage = () => (
   <>
