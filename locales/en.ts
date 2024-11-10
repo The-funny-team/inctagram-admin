@@ -43,6 +43,11 @@ export const en = {
         deleteUser: 'Delete User',
         moreInfo: 'More Information',
       },
+      select: {
+        blocked: 'Blocked',
+        notBlocked: 'Not Blocked',
+        notSelected: 'Not selected',
+      },
       tableHead: {
         dateAdded: 'Date added',
         profileLink: 'Profile Link',

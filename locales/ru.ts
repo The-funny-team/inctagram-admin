@@ -46,6 +46,11 @@ export const ru: LocaleType = {
         deleteUser: 'Удалить пользователя',
         moreInfo: 'Дополнительная информация',
       },
+      select: {
+        blocked: 'Заблокированные',
+        notBlocked: 'Не Заблокированные',
+        notSelected: 'Все Пользователи',
+      },
       tableHead: {
         dateAdded: 'Дата добавления',
         profileLink: 'Ссылка на профиль',

@@ -1,17 +1,11 @@
 import { useState } from 'react'
 
-import { useDebounce } from '@/shared/lib/hooks'
+import { useDebounce, useTranslation } from '@/shared/lib/hooks'
 import { Input, Pagination, Select, TableEmpty } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
 
 import { UserType, UsersListTable } from './UsersListTable'
-
-const selectOptions = [
-  { label: 'Not selected', value: 'all' },
-  { label: 'Blocked', value: 'blocked' },
-  { label: 'Not Blocked', value: 'notBlocked' },
-]
 
 const PAGINATION_OPTIONS = [
   { label: '10', value: '10' },
@@ -26,6 +20,14 @@ export const UsersList = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(10)
   const [search, setSearch] = useState<string>('')
+  const { text } = useTranslation()
+  const t = text.pages.usersList.select
+
+  const selectOptions = [
+    { label: t.notSelected, value: 'all' },
+    { label: t.blocked, value: 'blocked' },
+    { label: t.notBlocked, value: 'notBlocked' },
+  ]
 
   const handlePageSize = (pageSize: string) => {
     setPageSize(+pageSize)
