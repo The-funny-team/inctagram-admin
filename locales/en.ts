@@ -29,6 +29,14 @@ export const en = {
       passwordLabel: 'Password',
       title: 'Sign In',
     },
+    user: {
+      tabs: {
+        followers: 'Followers',
+        following: 'Following',
+        payments: 'Payments',
+        uploadPhotos: 'Uploaded photos',
+      },
+    },
     usersList: {
       dropdown: {
         banUser: 'Ban in the system',

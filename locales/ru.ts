@@ -32,6 +32,14 @@ export const ru: LocaleType = {
       passwordLabel: 'Пароль',
       title: 'Войти',
     },
+    user: {
+      tabs: {
+        followers: 'Подписчики',
+        following: 'Подписки',
+        payments: 'Платежи',
+        uploadPhotos: 'Загруженные фото',
+      },
+    },
     usersList: {
       dropdown: {
         banUser: 'Запрет доступа в системе',
