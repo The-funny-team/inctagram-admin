@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useTranslation } from '@/shared/lib/hooks'
 import { Tabs } from '@funnyteam/ui-kit'
 
+import { Followers, Following, Payments, Uploaded } from './UserTabsContent'
+
 enum TabContentType {
   FOLLOWERS = 'FOLLOWERS',
   FOLLOWING = 'FOLLOWING',
@@ -31,10 +33,10 @@ export const UserMain = () => {
         <Tabs onValueChange={onChangeHandler} options={optionTabs} value={curTab} />
       </div>
       <div>
-        {curTab === TabContentType.UPLOADED && <div>Uploaded Photos</div>}
-        {curTab === TabContentType.PAYMENTS && <div>Payments</div>}
-        {curTab === TabContentType.FOLLOWERS && <div>Followers</div>}
-        {curTab === TabContentType.FOLLOWING && <div>Following</div>}
+        {curTab === TabContentType.UPLOADED && <Uploaded />}
+        {curTab === TabContentType.PAYMENTS && <Payments />}
+        {curTab === TabContentType.FOLLOWERS && <Followers />}
+        {curTab === TabContentType.FOLLOWING && <Following />}
       </div>
     </div>
   )
