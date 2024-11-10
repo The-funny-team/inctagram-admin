@@ -1,4 +1,5 @@
 import { useTranslation } from '@/shared/lib/hooks'
+import { User } from '@/types'
 import {
   DropdownMenu,
   Table,
@@ -11,14 +12,8 @@ import {
 
 import s from './UsersList.module.scss'
 
-export type UserType = {
-  dateAdded: string
-  profileLink: string
-  userId: string
-  userName: string
-}
 type PropsType = {
-  users: UserType[]
+  users: Omit<User, 'email' | 'profile'>[]
 }
 
 export const UsersListTable = ({ users }: PropsType) => {
@@ -39,11 +34,11 @@ export const UsersListTable = ({ users }: PropsType) => {
         </TableHead>
         <TableBody>
           {users.map(user => (
-            <TableRow key={user.userId}>
-              <TableCell>{user.userId}</TableCell>
+            <TableRow key={user.id}>
+              <TableCell>{user.id}</TableCell>
               <TableCell>{user.userName}</TableCell>
-              <TableCell>{user.profileLink}</TableCell>
-              <TableCell>{new Date(user.dateAdded).toLocaleDateString('ru-RU')}</TableCell>
+              <TableCell>{`user/${user.id}`}</TableCell>
+              <TableCell>{new Date(user.createdAt).toLocaleDateString('ru-RU')}</TableCell>
               <TableCell>
                 <DropdownMenu />
               </TableCell>
