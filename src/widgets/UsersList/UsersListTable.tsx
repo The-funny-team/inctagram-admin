@@ -1,8 +1,8 @@
 import { BanIcon } from '@/shared/assets'
 import { useTranslation } from '@/shared/lib/hooks'
 import { User } from '@/types'
+import { UsersListDropdown } from '@/widgets/UsersListDropdown'
 import {
-  DropdownMenu,
   Table,
   TableBody,
   TableCell,
@@ -47,7 +47,7 @@ export const UsersListTable = ({ users }: PropsType) => {
               <TableCell>{`user/${user.id}`}</TableCell>
               <TableCell>{new Date(user.createdAt).toLocaleDateString('ru-RU')}</TableCell>
               <TableCell>
-                <DropdownMenu />
+                <UsersListDropdown userId={user.id} />
               </TableCell>
             </TableRow>
           ))}
