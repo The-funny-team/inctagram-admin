@@ -1,3 +1,4 @@
+import { BanIcon } from '@/shared/assets'
 import { useTranslation } from '@/shared/lib/hooks'
 import { User } from '@/types'
 import {
@@ -8,6 +9,7 @@ import {
   TableHead,
   TableHeadCell,
   TableRow,
+  Typography,
 } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
@@ -35,7 +37,12 @@ export const UsersListTable = ({ users }: PropsType) => {
         <TableBody>
           {users.map(user => (
             <TableRow key={user.id}>
-              <TableCell>{user.id}</TableCell>
+              <TableCell>
+                <div className={s.idCell}>
+                  {user.userBan?.reason && <BanIcon className={s.banIcon} />}
+                  <Typography as={'span'}>{user.id}</Typography>
+                </div>
+              </TableCell>
               <TableCell>{user.userName}</TableCell>
               <TableCell>{`user/${user.id}`}</TableCell>
               <TableCell>{new Date(user.createdAt).toLocaleDateString('ru-RU')}</TableCell>
