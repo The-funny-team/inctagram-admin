@@ -4,5 +4,6 @@ export const ROUTES_URL = {
   POSTS_LIST: '/posts-list',
   SIGN_IN: '/sign-in',
   STATISTICS: '/statistics',
+  USER: '/user',
   USERS_LIST: '/users-list',
 }
