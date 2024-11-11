@@ -8,6 +8,7 @@ import { Input, Pagination, Select } from '@funnyteam/ui-kit'
 import s from './UsersList.module.scss'
 
 import { UsersListTable } from './UsersListTable'
+import { Loader } from '@/shared/ui/Loader'
 
 export type SortByType = 'createdAt' | 'userName'
 
@@ -79,6 +80,7 @@ export const UsersList = () => {
             </div>
             <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
           </div>
+          {loading && <Loader />}
           {usersList && (
             <div>
               <UsersListTable

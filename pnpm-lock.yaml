@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.11.9
     version: 3.11.9(@types/react@18.3.12)(graphql@16.9.0)(react-dom@18.3.1)(react@18.3.1)
   '@funnyteam/ui-kit':
-    specifier: ^0.0.12
-    version: 0.0.12(@types/react-dom@18.3.1)(@types/react@18.3.12)
+    specifier: ^0.0.11
+    version: 0.0.11(@types/react-dom@18.3.1)(@types/react@18.3.12)
   '@graphql-codegen/cli':
     specifier: ^5.0.3
     version: 5.0.3(@types/node@20.0.0)(graphql@16.9.0)(typescript@5.0.2)
@@ -845,8 +845,8 @@ packages:
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
     dev: false
 
-  /@funnyteam/ui-kit@0.0.12(@types/react-dom@18.3.1)(@types/react@18.3.12):
-    resolution: {integrity: sha512-+94DbQ4tgvNFWOoU+TQn+VS3cy+sFPcy3XGR4PsHNYFn6OwVq6B+A7oFKhCW8VQEaNB8FeQtEReYZXoYrDUdBA==}
+  /@funnyteam/ui-kit@0.0.11(@types/react-dom@18.3.1)(@types/react@18.3.12):
+    resolution: {integrity: sha512-bSITf8+WOv0NZxK9toZ5TAwRH13rg0iBzEbGJ4WR2wWCuEqt6aC1EeIe58KO50t9zv6FQ5jGlfLdcUVCPT/9Dg==}
     dependencies:
       '@radix-ui/react-checkbox': 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-dialog': 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
