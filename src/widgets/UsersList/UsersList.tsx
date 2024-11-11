@@ -18,13 +18,15 @@ const PAGINATION_OPTIONS = [
 
 export const UsersList = () => {
   const [usersStatus, setUsersStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [pageNumber, setPageNumber] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(8)
-  const [search, setSearch] = useState<string>('')
+  const [searchTerm, setSearch] = useState<string>('')
+  const debounceValue = useDebounce(searchTerm, 500)
   const { data, loading, error } = useGetAllUsersQuery({
     variables: {
-      pageNumber: currentPage,
-      pageSize: pageSize,
+      pageNumber,
+      pageSize,
+      searchTerm: debounceValue || '',
       sortBy: 'createdAt',
       sortDirection: SortDirection.Desc,
       statusFilter: usersStatus,
@@ -43,14 +45,15 @@ export const UsersList = () => {
 
   const handlePageSize = (pageSize: string) => {
     setPageSize(Number(pageSize))
-    setCurrentPage(1)
+    setPageNumber(1)
   }
 
   const handleIsBlocked = (value: string) => {
+    setPageNumber(1)
     setUsersStatus(prevState => value as UserBlockStatus)
   }
-  const debounceValue = useDebounce(search, 500)
   const handleSearch = (value: string) => {
+    setPageNumber(1)
     setSearch(prevState => value)
   }
 
@@ -60,7 +63,7 @@ export const UsersList = () => {
         <div className={s.wrapper}>
           <div className={s.filters}>
             <div className={s.filtersInput}>
-              <Input onValueChange={handleSearch} type={'search'} value={search} />
+              <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
             </div>
             <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
           </div>
@@ -69,8 +72,8 @@ export const UsersList = () => {
               <UsersListTable users={usersList} />
               <div className={s.pagination}>
                 <Pagination
-                  currentPage={currentPage}
-                  onChangePage={setCurrentPage}
+                  currentPage={pageNumber}
+                  onChangePage={setPageNumber}
                   onValueChange={handlePageSize}
                   options={PAGINATION_OPTIONS}
                   pageSize={pageSize}
