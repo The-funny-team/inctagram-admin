@@ -1,4 +1,5 @@
 import { BanIcon, SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
+import { ROUTES_URL } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import { SortDirection, User } from '@/types'
 import { UsersListDropdown } from '@/widgets/UsersListDropdown'
@@ -15,7 +16,6 @@ import {
 import s from './UsersList.module.scss'
 
 import { SortByType } from './UsersList'
-import { ROUTES_URL } from '@/shared/const'
 
 type PropsType = {
   direction: SortDirection

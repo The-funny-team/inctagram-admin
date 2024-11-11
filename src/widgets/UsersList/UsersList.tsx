@@ -2,13 +2,13 @@ import { useState } from 'react'
 
 import { useGetAllUsersQuery } from '@/queries/users/users.generated'
 import { useDebounce, useTranslation } from '@/shared/lib/hooks'
+import { Loader } from '@/shared/ui/Loader'
 import { SortDirection, User, UserBlockStatus } from '@/types'
 import { Input, Pagination, Select } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
 
 import { UsersListTable } from './UsersListTable'
-import { Loader } from '@/shared/ui/Loader'
 
 export type SortByType = 'createdAt' | 'userName'
 
