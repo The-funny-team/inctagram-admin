@@ -30,6 +30,11 @@ export const en = {
       title: 'Sign In',
     },
     user: {
+      header: {
+        backLink: 'Back to Users List',
+        dateCreation: 'Profile Creation Date',
+        userId: 'UserID',
+      },
       tabs: {
         followers: 'Followers',
         following: 'Following',
