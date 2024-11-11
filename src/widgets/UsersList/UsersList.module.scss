@@ -20,12 +20,24 @@
   th,
   td {
     padding: 12px 24px;
+    width: 20%;
   }
+}
+
+.sortCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
 .idCell {
   padding-left: 36px;
   position: relative;
+}
+
+.dropDownCell {
+  text-align: end;
 }
 
 .banIcon {

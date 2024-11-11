@@ -3,11 +3,13 @@ import { useState } from 'react'
 import { useGetAllUsersQuery } from '@/queries/users/users.generated'
 import { useDebounce, useTranslation } from '@/shared/lib/hooks'
 import { SortDirection, User, UserBlockStatus } from '@/types'
-import { Input, Pagination, Select, TableEmpty } from '@funnyteam/ui-kit'
+import { Input, Pagination, Select } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
 
 import { UsersListTable } from './UsersListTable'
+
+export type SortByType = 'createdAt' | 'userName'
 
 const PAGINATION_OPTIONS = [
   { label: '8', value: '8' },
@@ -17,18 +19,20 @@ const PAGINATION_OPTIONS = [
 ]
 
 export const UsersList = () => {
+  const [sortBy, setSortBy] = useState<SortByType>('createdAt')
+  const [sortDirection, setSortDirection] = useState<SortDirection>(SortDirection.Desc)
   const [usersStatus, setUsersStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(8)
   const [searchTerm, setSearch] = useState<string>('')
   const debounceValue = useDebounce(searchTerm, 500)
-  const { data, loading, error } = useGetAllUsersQuery({
+  const { data, error, loading } = useGetAllUsersQuery({
     variables: {
       pageNumber,
       pageSize,
       searchTerm: debounceValue || '',
-      sortBy: 'createdAt',
-      sortDirection: SortDirection.Desc,
+      sortBy,
+      sortDirection,
       statusFilter: usersStatus,
     },
   })
@@ -57,6 +61,14 @@ export const UsersList = () => {
     setSearch(prevState => value)
   }
 
+  const handleDirectionChange = (sortParams: {
+    newDirection: SortDirection
+    newSortBy: SortByType
+  }) => {
+    setSortBy(sortParams.newSortBy)
+    setSortDirection(sortParams.newDirection)
+  }
+
   return (
     <>
       <main>
@@ -67,9 +79,14 @@ export const UsersList = () => {
             </div>
             <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
           </div>
-          {usersList?.length ? (
+          {usersList && (
             <div>
-              <UsersListTable users={usersList} />
+              <UsersListTable
+                direction={sortDirection}
+                onDirectionChange={handleDirectionChange}
+                sortBy={sortBy}
+                users={usersList}
+              />
               <div className={s.pagination}>
                 <Pagination
                   currentPage={pageNumber}
@@ -81,8 +98,6 @@ export const UsersList = () => {
                 />
               </div>
             </div>
-          ) : (
-            <TableEmpty message={'There is no users'} />
           )}
         </div>
       </main>
