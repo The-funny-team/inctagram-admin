@@ -15,6 +15,7 @@ import {
 import s from './UsersList.module.scss'
 
 import { SortByType } from './UsersList'
+import { ROUTES_URL } from '@/shared/const'
 
 type PropsType = {
   direction: SortDirection
@@ -87,8 +88,13 @@ export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: 
                 </Typography>
               </TableCell>
               <TableCell>
-                <Typography as={'span'} variant={'regularText14'}>
-                  {`user/${user.id}`}
+                <Typography
+                  as={'a'}
+                  className={s.linkCell}
+                  href={`${ROUTES_URL.USER}/${user.id}`}
+                  variant={'regularText14'}
+                >
+                  {user.userName}_link
                 </Typography>
               </TableCell>
               <TableCell>
