@@ -33,6 +33,11 @@ export const ru: LocaleType = {
       title: 'Войти',
     },
     user: {
+      header: {
+        backLink: 'Назад к списку пользователей',
+        dateCreation: 'Дата создания профиля',
+        userId: 'ID пользователя',
+      },
       tabs: {
         followers: 'Подписчики',
         following: 'Подписки',
@@ -48,8 +53,8 @@ export const ru: LocaleType = {
       },
       select: {
         blocked: 'Заблокированные',
-        notBlocked: 'Не Заблокированные',
-        notSelected: 'Все Пользователи',
+        notBlocked: 'Не заблокированные',
+        notSelected: 'Все пользователи',
       },
       tableHead: {
         dateAdded: 'Дата добавления',
