@@ -36,6 +36,31 @@ export type GetUploadedPhotosQuery = {
   }
 }
 
+export type GetPaymentsQueryVariables = Types.Exact<{
+  page?: Types.InputMaybe<Types.Scalars['Int']['input']>
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>
+  sortDirection?: Types.InputMaybe<Types.SortDirection>
+  userId: Types.Scalars['Int']['input']
+}>
+
+export type GetPaymentsQuery = {
+  __typename?: 'Query'
+  getPaymentsByUser: {
+    __typename?: 'PaymentPaginationModel'
+    items: Array<{
+      __typename?: 'SubscriptionByPaymentModel'
+      dateOfPayment?: any | null
+      endDate?: any | null
+      id: string
+      paymentType?: Types.PaymentMethod | null
+      price: number
+      type: Types.SubscriptionType
+    }>
+    totalCount: number
+  }
+}
+
 export const GetUserInfoDocument = gql`
   query getUserInfo($id: Int!) {
     getUser(userId: $id) {
@@ -191,3 +216,95 @@ export type GetUploadedPhotosQueryResult = Apollo.QueryResult<
   GetUploadedPhotosQuery,
   GetUploadedPhotosQueryVariables
 >
+export const GetPaymentsDocument = gql`
+  query getPayments(
+    $userId: Int!
+    $pageSize: Int
+    $page: Int
+    $sortBy: String
+    $sortDirection: SortDirection
+  ) {
+    getPaymentsByUser(
+      userId: $userId
+      pageSize: $pageSize
+      pageNumber: $page
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+    ) {
+      totalCount
+      items {
+        dateOfPayment
+        endDate
+        price
+        paymentType
+        type
+        id
+      }
+    }
+  }
+`
+
+/**
+ * __useGetPaymentsQuery__
+ *
+ * To run a query within a React component, call `useGetPaymentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPaymentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPaymentsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      pageSize: // value for 'pageSize'
+ *      page: // value for 'page'
+ *      sortBy: // value for 'sortBy'
+ *      sortDirection: // value for 'sortDirection'
+ *   },
+ * });
+ */
+export function useGetPaymentsQuery(
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetPaymentsQueryVariables
+      }
+    | { skip: boolean }
+  ) &
+    Apollo.QueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(GetPaymentsDocument, options)
+}
+
+export function useGetPaymentsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useLazyQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(
+    GetPaymentsDocument,
+    options
+  )
+}
+
+export function useGetPaymentsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useSuspenseQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(
+    GetPaymentsDocument,
+    options
+  )
+}
+
+export type GetPaymentsQueryHookResult = ReturnType<typeof useGetPaymentsQuery>
+export type GetPaymentsLazyQueryHookResult = ReturnType<typeof useGetPaymentsLazyQuery>
+export type GetPaymentsSuspenseQueryHookResult = ReturnType<typeof useGetPaymentsSuspenseQuery>
+export type GetPaymentsQueryResult = Apollo.QueryResult<GetPaymentsQuery, GetPaymentsQueryVariables>

@@ -25,3 +25,31 @@ export const GET_UPLOADED_PHOTOS = gql(/* GraphQL */ `
     }
   }
 `)
+
+export const GET_PAYMENTS = gql(/* GraphQL */ `
+  query getPayments(
+    $userId: Int!
+    $pageSize: Int
+    $page: Int
+    $sortBy: String
+    $sortDirection: SortDirection
+  ) {
+    getPaymentsByUser(
+      userId: $userId
+      pageSize: $pageSize
+      pageNumber: $page
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+    ) {
+      totalCount
+      items {
+        dateOfPayment
+        endDate
+        price
+        paymentType
+        type
+        id
+      }
+    }
+  }
+`)
