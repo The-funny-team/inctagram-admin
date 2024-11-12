@@ -1,1 +1,1 @@
-export { DeleteUserModal } from 'src/widgets/DeleteUserModal/ui/DeleteUserModal'
+export { DeleteUserModal } from './DeleteUserModal'

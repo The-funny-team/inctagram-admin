@@ -7,7 +7,7 @@ import { Button, Modal, Select, Typography } from '@funnyteam/ui-kit'
 import s from './BanUserModal.module.scss'
 type Props = {
   isOpenBanModal: boolean
-  setIsOpenBanModal: (isOpenBanModal) => void
+  setIsOpenBanModal: (isOpenBanModal: boolean) => void
   userId: number
   userName: string
 }
