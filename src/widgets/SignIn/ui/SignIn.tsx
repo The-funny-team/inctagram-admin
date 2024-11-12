@@ -1,5 +1,8 @@
 import { Controller } from 'react-hook-form'
 
+import { useSignInMutation } from '@/queries/sign-in/sign-in.generated'
+import { ROUTES_URL } from '@/shared/const'
+import { saveToLocalStorage } from '@/shared/lib/helpers'
 import { useTranslation } from '@/shared/lib/hooks'
 import { SignInFormValuesType, useSignIn } from '@/widgets/SignIn/services'
 import { Button, Card, Input, Typography } from '@funnyteam/ui-kit'
@@ -8,8 +11,9 @@ import { clsx } from 'clsx'
 import s from './SignIn.module.scss'
 
 export const SignIn = () => {
-  const { text } = useTranslation()
+  const { router, text } = useTranslation()
   const t = text.pages.signIn
+  const [login, { data: auth, error }] = useSignInMutation()
 
   const {
     control,
@@ -18,7 +22,15 @@ export const SignIn = () => {
     setError,
   } = useSignIn(text.validation)
 
-  const onFormSubmit = handleSubmit((data: SignInFormValuesType) => console.log(data))
+  const onFormSubmit = handleSubmit((data: SignInFormValuesType) => {
+    login({ variables: { email: data.email, password: data.password } })
+      .then(() => {
+        saveToLocalStorage('username', data.email)
+        saveToLocalStorage('password', data.password)
+        void router.push(ROUTES_URL.USERS_LIST)
+      })
+      .catch(err => setError('root', { message: error?.message }))
+  })
 
   const classNames = {
     forgotLink: s.forgotLink,
