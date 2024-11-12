@@ -23,10 +23,10 @@ export const SignIn = () => {
   } = useSignIn(text.validation)
 
   const onFormSubmit = handleSubmit((data: SignInFormValuesType) => {
-    saveToLocalStorage('username', data.email)
-    saveToLocalStorage('password', data.password)
     login({ variables: { email: data.email, password: data.password } })
       .then(() => {
+        saveToLocalStorage('username', data.email)
+        saveToLocalStorage('password', data.password)
         void router.push(ROUTES_URL.USERS_LIST)
       })
       .catch(err => setError('root', { message: error?.message }))
