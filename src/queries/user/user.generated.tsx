@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
 import * as Types from '../../types'
+
 const defaultOptions = {} as const
 
 export type GetUserInfoQueryVariables = Types.Exact<{
@@ -18,6 +19,20 @@ export type GetUserInfoQuery = {
       avatars?: Array<{ __typename?: 'Avatar'; url?: null | string }> | null
     }
     userName: string
+  }
+}
+
+export type GetUploadedPhotosQueryVariables = Types.Exact<{
+  endCursorId?: Types.InputMaybe<Types.Scalars['Int']['input']>
+  userId: Types.Scalars['Int']['input']
+}>
+
+export type GetUploadedPhotosQuery = {
+  __typename?: 'Query'
+  getPostsByUser: {
+    __typename?: 'PostsByUserModel'
+    items?: Array<{ __typename?: 'ImagePost'; id?: null | number; url?: null | string }> | null
+    totalCount: number
   }
 }
 
@@ -52,13 +67,20 @@ export const GetUserInfoDocument = gql`
  * });
  */
 export function useGetUserInfoQuery(
-  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetUserInfoQueryVariables }) &
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetUserInfoQueryVariables
+      }
+    | { skip: boolean }
+  ) &
     Apollo.QueryHookOptions<GetUserInfoQuery, GetUserInfoQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
 
   return Apollo.useQuery<GetUserInfoQuery, GetUserInfoQueryVariables>(GetUserInfoDocument, options)
 }
+
 export function useGetUserInfoLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetUserInfoQuery, GetUserInfoQueryVariables>
 ) {
@@ -69,6 +91,7 @@ export function useGetUserInfoLazyQuery(
     options
   )
 }
+
 export function useGetUserInfoSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -82,7 +105,89 @@ export function useGetUserInfoSuspenseQuery(
     options
   )
 }
+
 export type GetUserInfoQueryHookResult = ReturnType<typeof useGetUserInfoQuery>
 export type GetUserInfoLazyQueryHookResult = ReturnType<typeof useGetUserInfoLazyQuery>
 export type GetUserInfoSuspenseQueryHookResult = ReturnType<typeof useGetUserInfoSuspenseQuery>
 export type GetUserInfoQueryResult = Apollo.QueryResult<GetUserInfoQuery, GetUserInfoQueryVariables>
+export const GetUploadedPhotosDocument = gql`
+  query getUploadedPhotos($userId: Int!, $endCursorId: Int) {
+    getPostsByUser(endCursorId: $endCursorId, userId: $userId) {
+      totalCount
+      items {
+        id
+        url
+      }
+    }
+  }
+`
+
+/**
+ * __useGetUploadedPhotosQuery__
+ *
+ * To run a query within a React component, call `useGetUploadedPhotosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUploadedPhotosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUploadedPhotosQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      endCursorId: // value for 'endCursorId'
+ *   },
+ * });
+ */
+export function useGetUploadedPhotosQuery(
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetUploadedPhotosQueryVariables
+      }
+    | { skip: boolean }
+  ) &
+    Apollo.QueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useQuery<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>(
+    GetUploadedPhotosDocument,
+    options
+  )
+}
+
+export function useGetUploadedPhotosLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useLazyQuery<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>(
+    GetUploadedPhotosDocument,
+    options
+  )
+}
+
+export function useGetUploadedPhotosSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useSuspenseQuery<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>(
+    GetUploadedPhotosDocument,
+    options
+  )
+}
+
+export type GetUploadedPhotosQueryHookResult = ReturnType<typeof useGetUploadedPhotosQuery>
+export type GetUploadedPhotosLazyQueryHookResult = ReturnType<typeof useGetUploadedPhotosLazyQuery>
+export type GetUploadedPhotosSuspenseQueryHookResult = ReturnType<
+  typeof useGetUploadedPhotosSuspenseQuery
+>
+export type GetUploadedPhotosQueryResult = Apollo.QueryResult<
+  GetUploadedPhotosQuery,
+  GetUploadedPhotosQueryVariables
+>

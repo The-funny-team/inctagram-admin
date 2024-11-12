@@ -13,3 +13,15 @@ export const GET_USER_PERSONAL_INFO = gql(/* GraphQL */ `
     }
   }
 `)
+
+export const GET_UPLOADED_PHOTOS = gql(/* GraphQL */ `
+  query getUploadedPhotos($userId: Int!, $endCursorId: Int) {
+    getPostsByUser(endCursorId: $endCursorId, userId: $userId) {
+      totalCount
+      items {
+        id
+        url
+      }
+    }
+  }
+`)
