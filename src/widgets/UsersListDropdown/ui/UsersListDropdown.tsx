@@ -1,4 +1,5 @@
 import { BanIcon, DeleteUserIcon, DotsIcon } from '@/shared/assets'
+import { ROUTES_URL } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import {
   DropdownMenu,
@@ -15,7 +16,7 @@ type Props = {
 }
 
 export const UsersListDropdown = ({ userId }: Props) => {
-  const { text } = useTranslation()
+  const { router, text } = useTranslation()
   const t = text.pages.usersList.dropdown
   const onDeleteUser = () => {
     console.log('delete user with id=', userId)
@@ -24,7 +25,7 @@ export const UsersListDropdown = ({ userId }: Props) => {
     console.log('ban user with id=', userId)
   }
   const onMoreInformation = () => {
-    console.log('redirect to users page with id=', userId)
+    void router.push(`${ROUTES_URL.USER}/${userId}`)
   }
 
   return (
