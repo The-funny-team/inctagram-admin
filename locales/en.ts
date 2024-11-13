@@ -46,6 +46,13 @@ export const en = {
         },
         payments: {
           emptyTab: 'No payments yet',
+          tableHead: {
+            endDate: 'End date of subscription',
+            paymentType: 'Payment Type',
+            price: 'Amount, $',
+            startDate: 'Date of Payment',
+            subscriptionType: 'Subscription Type',
+          },
           title: 'Payments',
         },
         uploadPhotos: {
