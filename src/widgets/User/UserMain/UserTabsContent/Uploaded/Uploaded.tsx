@@ -32,10 +32,9 @@ export const Uploaded = ({ userId }: Props) => {
 }
 
 type SkeletonProps = {
-  className?: string
   height?: string
   width?: string
 }
-const Skeleton = ({ className, height = '100%', width = '100%' }: SkeletonProps) => (
-  <div className={clsx(s.skeleton, className)} style={{ height, width }} />
+const Skeleton = ({ height = '100%', width = '100%' }: SkeletonProps) => (
+  <div className={s.skeleton} style={{ height, width }} />
 )
