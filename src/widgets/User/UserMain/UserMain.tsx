@@ -32,7 +32,7 @@ export const UserMain = () => {
       <div>
         <Tabs onValueChange={onChangeHandler} options={optionTabs} value={curTab} />
       </div>
-      <div>
+      <div style={{ paddingTop: '36px' }}>
         {curTab === TabContentType.UPLOADED && <Uploaded />}
         {curTab === TabContentType.PAYMENTS && <Payments />}
         {curTab === TabContentType.FOLLOWERS && <Followers />}
