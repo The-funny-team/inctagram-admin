@@ -1,5 +1,6 @@
 import { useGetUploadedPhotosQuery } from '@/queries/user/user.generated'
-import clsx from 'clsx'
+import { useTranslation } from '@/shared/lib/hooks'
+import { Typography } from '@funnyteam/ui-kit'
 import Image from 'next/image'
 
 import s from './Uploaded.module.scss'
@@ -8,6 +9,8 @@ type Props = {
   userId: number
 }
 export const Uploaded = ({ userId }: Props) => {
+  const { text } = useTranslation()
+  const t = text.pages.user.tabs.uploadPhotos
   const { data, loading } = useGetUploadedPhotosQuery({
     skip: !userId,
     variables: {
@@ -22,11 +25,17 @@ export const Uploaded = ({ userId }: Props) => {
     <div className={s.images}>
       {loading &&
         skeletonArray.map((_, index) => <Skeleton height={'235px'} key={index} width={'230px'} />)}
-      {photos?.map(p => (
-        <div className={s.imageItem} key={p.id}>
-          <Image alt={'post'} fill src={p.url ?? ''} />
+      {photos?.length ? (
+        photos?.map(p => (
+          <div className={s.imageItem} key={p.id}>
+            <Image alt={'post'} fill src={p.url ?? ''} />
+          </div>
+        ))
+      ) : (
+        <div className={s.noPhotos}>
+          <Typography variant={'large'}>{t.emptyTab}</Typography>
         </div>
-      ))}
+      )}
     </div>
   )
 }

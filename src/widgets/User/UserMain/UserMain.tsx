@@ -19,10 +19,10 @@ export const UserMain = () => {
   const { id } = router.query
 
   const optionTabs = [
-    { label: t.uploadPhotos, value: TabContentType.UPLOADED },
-    { label: t.payments, value: TabContentType.PAYMENTS },
-    { label: t.followers, value: TabContentType.FOLLOWERS },
-    { label: t.following, value: TabContentType.FOLLOWING },
+    { label: t.uploadPhotos.title, value: TabContentType.UPLOADED },
+    { label: t.payments.title, value: TabContentType.PAYMENTS },
+    { label: t.followers.title, value: TabContentType.FOLLOWERS },
+    { label: t.following.title, value: TabContentType.FOLLOWING },
   ]
   const onChangeHandler = (value: string) => {
     setCurTab(prevState => value)
