@@ -1,3 +1,6 @@
-export const Uploaded = () => {
+type Props = {
+  userId: number
+}
+export const Uploaded = ({ userId }: Props) => {
   return <div>Uploaded</div>
 }
