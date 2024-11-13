@@ -49,6 +49,13 @@ export const ru: LocaleType = {
         },
         payments: {
           emptyTab: 'Пока нет платежей',
+          tableHead: {
+            endDate: 'Дата окончания',
+            paymentType: 'Тип оплаты',
+            price: 'Стоимость, $',
+            startDate: 'Дата оплаты',
+            subscriptionType: 'Тип подписки',
+          },
           title: 'Платежи',
         },
         uploadPhotos: {

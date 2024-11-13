@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { useGetPaymentsQuery } from '@/queries/user/user.generated'
 import { PAGINATION_OPTIONS } from '@/shared/const'
+import { useTranslation } from '@/shared/lib/hooks'
 import { Loader } from '@/shared/ui/Loader'
 import {
   Pagination,
@@ -23,6 +24,8 @@ type Props = {
 export const Payments = ({ userId }: Props) => {
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(8)
+  const { text } = useTranslation()
+  const t = text.pages.user.tabs.payments.tableHead
 
   const { data, loading } = useGetPaymentsQuery({
     variables: {
@@ -50,52 +53,44 @@ export const Payments = ({ userId }: Props) => {
         <TableHead>
           <TableRow>
             <TableHeadCell>
-              <Typography variant={'boldText14'}>Date of Payment</Typography>
+              <Typography variant={'boldText14'}>{t.startDate}</Typography>
             </TableHeadCell>
             <TableHeadCell>
-              <div className={s.sortCell}>
-                <Typography variant={'boldText14'}>End date of subscription</Typography>
-              </div>
+              <Typography variant={'boldText14'}>{t.endDate}</Typography>
             </TableHeadCell>
             <TableHeadCell>
-              <Typography variant={'boldText14'}>Amount, $</Typography>
+              <Typography variant={'boldText14'}>{t.price}</Typography>
             </TableHeadCell>
             <TableHeadCell>
-              <div className={s.sortCell}>
-                <Typography as={'span'} variant={'boldText14'}>
-                  Subscription Type
-                </Typography>
-              </div>
+              <Typography variant={'boldText14'}>{t.subscriptionType}</Typography>
             </TableHeadCell>
-            <TableHeadCell>Payment Type</TableHeadCell>
+            <TableHeadCell>
+              <Typography variant={'boldText14'}>{t.paymentType}</Typography>
+            </TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {payments?.map(p => (
             <TableRow key={p.id}>
               <TableCell>
-                <div className={s.idCell}>
-                  <Typography variant={'regularText14'}>
-                    {new Date(p.dateOfPayment).toLocaleDateString('ru-Ru')}
-                  </Typography>
-                </div>
+                <Typography variant={'regularText14'}>
+                  {new Date(p.dateOfPayment).toLocaleDateString('ru-Ru')}
+                </Typography>
               </TableCell>
               <TableCell>
-                <Typography as={'span'} variant={'regularText14'}>
+                <Typography variant={'regularText14'}>
                   {new Date(p.endDate).toLocaleDateString('ru-Ru')}
                 </Typography>
               </TableCell>
               <TableCell>
-                <Typography className={s.linkCell} variant={'regularText14'}>
-                  {p.price}
-                </Typography>
+                <Typography variant={'regularText14'}>{p.price}</Typography>
               </TableCell>
               <TableCell>
-                <Typography as={'span'} variant={'regularText14'}>
-                  {p.type}
-                </Typography>
+                <Typography variant={'regularText14'}>{p.type}</Typography>
               </TableCell>
-              <TableCell>{p.paymentType}</TableCell>
+              <TableCell>
+                <Typography variant={'regularText14'}>{p.paymentType}</Typography>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
