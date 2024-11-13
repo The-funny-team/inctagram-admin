@@ -16,7 +16,6 @@ type PropsType = {
 
 export const UsersListRow = ({ user }: PropsType) => {
   const { text } = useTranslation()
-  const t = text.pages.usersList.tableHead
   const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(false)
   const deleteUserHandler = () => {
     setIsOpenDeleteUserModal(true)

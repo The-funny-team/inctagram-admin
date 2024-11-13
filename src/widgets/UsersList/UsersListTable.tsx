@@ -20,7 +20,6 @@ type PropsType = {
 export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: PropsType) => {
   const { text } = useTranslation()
   const t = text.pages.usersList.tableHead
-  const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(true)
   const toggleSort = (newSortBy: SortByType) => {
     const newDirection = direction === SortDirection.Asc ? SortDirection.Desc : SortDirection.Asc
 
