@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useGetPaymentsQuery } from '@/queries/user/user.generated'
+import { PAGINATION_OPTIONS } from '@/shared/const'
 import { Loader } from '@/shared/ui/Loader'
 import {
   Pagination,
@@ -18,13 +19,6 @@ import s from './Payments.module.scss'
 type Props = {
   userId: number
 }
-
-const PAGINATION_OPTIONS = [
-  { label: '8', value: '8' },
-  { label: '20', value: '20' },
-  { label: '50', value: '50' },
-  { label: '100', value: '100' },
-]
 
 export const Payments = ({ userId }: Props) => {
   const [pageNumber, setPageNumber] = useState<number>(1)

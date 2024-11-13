@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useGetAllUsersQuery } from '@/queries/users/users.generated'
+import { PAGINATION_OPTIONS } from '@/shared/const'
 import { useDebounce, useTranslation } from '@/shared/lib/hooks'
 import { Loader } from '@/shared/ui/Loader'
 import { SortDirection, User, UserBlockStatus } from '@/types'
@@ -11,13 +12,6 @@ import s from './UsersList.module.scss'
 import { UsersListTable } from './UsersListTable'
 
 export type SortByType = 'createdAt' | 'userName'
-
-const PAGINATION_OPTIONS = [
-  { label: '8', value: '8' },
-  { label: '20', value: '20' },
-  { label: '50', value: '50' },
-  { label: '100', value: '100' },
-]
 
 export const UsersList = () => {
   const [sortBy, setSortBy] = useState<SortByType>('createdAt')
