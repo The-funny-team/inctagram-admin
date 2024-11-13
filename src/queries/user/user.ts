@@ -79,3 +79,29 @@ export const GET_FOLLOWERS = gql(/* GraphQL */ `
     }
   }
 `)
+
+export const GET_FOLLOWING = gql(/* GraphQL */ `
+  query getFollowing(
+    $userId: Int!
+    $pageSize: Int
+    $page: Int
+    $sortBy: String
+    $sortDirection: SortDirection
+  ) {
+    getFollowing(
+      userId: $userId
+      pageSize: $pageSize
+      pageNumber: $page
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+    ) {
+      totalCount
+      items {
+        id
+        userId
+        userName
+        createdAt
+      }
+    }
+  }
+`)
