@@ -53,3 +53,29 @@ export const GET_PAYMENTS = gql(/* GraphQL */ `
     }
   }
 `)
+
+export const GET_FOLLOWERS = gql(/* GraphQL */ `
+  query getFollowers(
+    $userId: Int!
+    $pageSize: Int
+    $page: Int
+    $sortBy: String
+    $sortDirection: SortDirection
+  ) {
+    getFollowers(
+      userId: $userId
+      pageSize: $pageSize
+      pageNumber: $page
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+    ) {
+      totalCount
+      items {
+        id
+        userId
+        userName
+        createdAt
+      }
+    }
+  }
+`)
