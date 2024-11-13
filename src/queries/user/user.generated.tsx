@@ -107,6 +107,12 @@ export type GetFollowingQuery = {
   }
 }
 
+export type RemoveUserMutationVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input']
+}>
+
+export type RemoveUserMutation = { __typename?: 'Mutation'; removeUser: boolean }
+
 export const GetUserInfoDocument = gql`
   query getUserInfo($id: Int!) {
     getUser(userId: $id) {
@@ -138,13 +144,7 @@ export const GetUserInfoDocument = gql`
  * });
  */
 export function useGetUserInfoQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetUserInfoQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetUserInfoQueryVariables }) &
     Apollo.QueryHookOptions<GetUserInfoQuery, GetUserInfoQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -212,11 +212,8 @@ export const GetUploadedPhotosDocument = gql`
  */
 export function useGetUploadedPhotosQuery(
   baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetUploadedPhotosQueryVariables
-      }
     | { skip: boolean }
+    | { skip?: boolean; variables: GetUploadedPhotosQueryVariables }
   ) &
     Apollo.QueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
 ) {
@@ -311,13 +308,7 @@ export const GetPaymentsDocument = gql`
  * });
  */
 export function useGetPaymentsQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetPaymentsQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetPaymentsQueryVariables }) &
     Apollo.QueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -401,13 +392,7 @@ export const GetFollowersDocument = gql`
  * });
  */
 export function useGetFollowersQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetFollowersQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetFollowersQueryVariables }) &
     Apollo.QueryHookOptions<GetFollowersQuery, GetFollowersQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -497,13 +482,7 @@ export const GetFollowingDocument = gql`
  * });
  */
 export function useGetFollowingQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetFollowingQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetFollowingQueryVariables }) &
     Apollo.QueryHookOptions<GetFollowingQuery, GetFollowingQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -545,4 +524,48 @@ export type GetFollowingSuspenseQueryHookResult = ReturnType<typeof useGetFollow
 export type GetFollowingQueryResult = Apollo.QueryResult<
   GetFollowingQuery,
   GetFollowingQueryVariables
+>
+export const RemoveUserDocument = gql`
+  mutation removeUser($userId: Int!) {
+    removeUser(userId: $userId)
+  }
+`
+export type RemoveUserMutationFn = Apollo.MutationFunction<
+  RemoveUserMutation,
+  RemoveUserMutationVariables
+>
+
+/**
+ * __useRemoveUserMutation__
+ *
+ * To run a mutation, you first call `useRemoveUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRemoveUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [removeUserMutation, { data, loading, error }] = useRemoveUserMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useRemoveUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<RemoveUserMutation, RemoveUserMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useMutation<RemoveUserMutation, RemoveUserMutationVariables>(
+    RemoveUserDocument,
+    options
+  )
+}
+
+export type RemoveUserMutationHookResult = ReturnType<typeof useRemoveUserMutation>
+export type RemoveUserMutationResult = Apollo.MutationResult<RemoveUserMutation>
+export type RemoveUserMutationOptions = Apollo.BaseMutationOptions<
+  RemoveUserMutation,
+  RemoveUserMutationVariables
 >
