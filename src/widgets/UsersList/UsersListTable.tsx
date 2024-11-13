@@ -1,17 +1,10 @@
-import { BanIcon, SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
-import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
+import { useState } from 'react'
+
+import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
 import { useTranslation } from '@/shared/lib/hooks'
 import { SortDirection, User } from '@/types'
-import { UsersListDropdown } from '@/widgets/UsersListDropdown'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeadCell,
-  TableRow,
-  Typography,
-} from '@funnyteam/ui-kit'
+import { UsersListRow } from '@/widgets/UsersList/UsersListRow'
+import { Table, TableBody, TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
 
@@ -27,6 +20,7 @@ type PropsType = {
 export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: PropsType) => {
   const { text } = useTranslation()
   const t = text.pages.usersList.tableHead
+  const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(true)
   const toggleSort = (newSortBy: SortByType) => {
     const newDirection = direction === SortDirection.Asc ? SortDirection.Desc : SortDirection.Asc
 
@@ -73,42 +67,7 @@ export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: 
         </TableHead>
         <TableBody>
           {users.map(user => (
-            <TableRow key={user.id}>
-              <TableCell>
-                <div className={s.idCell}>
-                  {user.userBan?.reason && <BanIcon className={s.banIcon} />}
-                  <Typography as={'span'} variant={'regularText14'}>
-                    {user.id}
-                  </Typography>
-                </div>
-              </TableCell>
-              <TableCell>
-                <Typography as={'span'} variant={'regularText14'}>
-                  {user.userName}
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography
-                  as={'a'}
-                  className={s.linkCell}
-                  href={`${LINK_TO_PROFILE_PUBLIC_PAGE}/${user.id}`}
-                  target={'_blank'}
-                  variant={'regularText14'}
-                >
-                  {user.userName}_link
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography as={'span'} variant={'regularText14'}>
-                  {new Date(user.createdAt).toLocaleDateString('ru-RU')}
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <div className={s.dropDownCell}>
-                  <UsersListDropdown userId={user.id} />
-                </div>
-              </TableCell>
-            </TableRow>
+            <UsersListRow key={user.id} user={user} />
           ))}
         </TableBody>
       </Table>
