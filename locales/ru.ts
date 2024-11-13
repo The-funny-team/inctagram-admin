@@ -39,10 +39,22 @@ export const ru: LocaleType = {
         userId: 'ID пользователя',
       },
       tabs: {
-        followers: 'Подписчики',
-        following: 'Подписки',
-        payments: 'Платежи',
-        uploadPhotos: 'Загруженные фото',
+        followers: {
+          emptyTab: 'Пока нет подписчиков',
+          title: 'Подписчики',
+        },
+        following: {
+          emptyTab: 'Пока нет подписок',
+          title: 'Подписки',
+        },
+        payments: {
+          emptyTab: 'Пока нет платежей',
+          title: 'Платежи',
+        },
+        uploadPhotos: {
+          emptyTab: 'Пока нет фото',
+          title: 'Загруженные фото',
+        },
       },
     },
     usersList: {

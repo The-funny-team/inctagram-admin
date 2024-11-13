@@ -16,12 +16,13 @@ export const UserMain = () => {
   const { router, text } = useTranslation()
   const t = text.pages.user.tabs
   const [curTab, setCurTab] = useState<string>(TabContentType.UPLOADED)
+  const { id } = router.query
 
   const optionTabs = [
-    { label: t.uploadPhotos, value: TabContentType.UPLOADED },
-    { label: t.payments, value: TabContentType.PAYMENTS },
-    { label: t.followers, value: TabContentType.FOLLOWERS },
-    { label: t.following, value: TabContentType.FOLLOWING },
+    { label: t.uploadPhotos.title, value: TabContentType.UPLOADED },
+    { label: t.payments.title, value: TabContentType.PAYMENTS },
+    { label: t.followers.title, value: TabContentType.FOLLOWERS },
+    { label: t.following.title, value: TabContentType.FOLLOWING },
   ]
   const onChangeHandler = (value: string) => {
     setCurTab(prevState => value)
@@ -32,8 +33,8 @@ export const UserMain = () => {
       <div>
         <Tabs onValueChange={onChangeHandler} options={optionTabs} value={curTab} />
       </div>
-      <div>
-        {curTab === TabContentType.UPLOADED && <Uploaded />}
+      <div style={{ paddingTop: '36px' }}>
+        {curTab === TabContentType.UPLOADED && <Uploaded userId={Number(id)} />}
         {curTab === TabContentType.PAYMENTS && <Payments />}
         {curTab === TabContentType.FOLLOWERS && <Followers />}
         {curTab === TabContentType.FOLLOWING && <Following />}

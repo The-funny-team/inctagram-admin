@@ -4,6 +4,22 @@ const nextConfig = {
     defaultLocale: 'en',
     locales: ['en', 'ru'],
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'staging-it-incubator.s3.eu-central-1.amazonaws.com',
+        pathname: '/trainee-instagram-api/**',
+        port: '',
+        protocol: 'https',
+      },
+      {
+        hostname: 'staging-it-incubator.s3.eu-central-1.amazonaws.com',
+        pathname: '/trainee-instagram-api/Image/**',
+        port: '',
+        protocol: 'https',
+      },
+    ],
+  },
   reactStrictMode: true,
 };
 

@@ -36,10 +36,22 @@ export const en = {
         userId: 'UserID',
       },
       tabs: {
-        followers: 'Followers',
-        following: 'Following',
-        payments: 'Payments',
-        uploadPhotos: 'Uploaded photos',
+        followers: {
+          emptyTab: 'No followers yet',
+          title: 'Followers',
+        },
+        following: {
+          emptyTab: 'No following yet',
+          title: 'Following',
+        },
+        payments: {
+          emptyTab: 'No payments yet',
+          title: 'Payments',
+        },
+        uploadPhotos: {
+          emptyTab: 'No photos yet',
+          title: 'Uploaded photos',
+        },
       },
     },
     usersList: {
