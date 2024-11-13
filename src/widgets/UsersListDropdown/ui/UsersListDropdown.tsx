@@ -12,18 +12,15 @@ import {
 import s from 'src/widgets/UsersListDropdown/ui/UsersListDropdown.module.scss'
 
 type Props = {
+  onBanUser: () => void
+  onDeleteUser: () => void
   userId: number
 }
 
-export const UsersListDropdown = ({ userId }: Props) => {
+export const UsersListDropdown = ({ onBanUser, onDeleteUser, userId }: Props) => {
   const { router, text } = useTranslation()
   const t = text.pages.usersList.dropdown
-  const onDeleteUser = () => {
-    console.log('delete user with id=', userId)
-  }
-  const onBanUser = () => {
-    console.log('ban user with id=', userId)
-  }
+
   const onMoreInformation = () => {
     void router.push(`${ROUTES_URL.USER}/${userId}`)
   }
