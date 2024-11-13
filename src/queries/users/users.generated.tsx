@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
 import * as Types from '../../types'
+
 const defaultOptions = {} as const
 
 export type GetAllUsersQueryVariables = Types.Exact<{
@@ -88,6 +89,7 @@ export function useGetAllUsersQuery(
 
   return Apollo.useQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options)
 }
+
 export function useGetAllUsersLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>
 ) {
@@ -98,6 +100,7 @@ export function useGetAllUsersLazyQuery(
     options
   )
 }
+
 export function useGetAllUsersSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -111,6 +114,7 @@ export function useGetAllUsersSuspenseQuery(
     options
   )
 }
+
 export type GetAllUsersQueryHookResult = ReturnType<typeof useGetAllUsersQuery>
 export type GetAllUsersLazyQueryHookResult = ReturnType<typeof useGetAllUsersLazyQuery>
 export type GetAllUsersSuspenseQueryHookResult = ReturnType<typeof useGetAllUsersSuspenseQuery>
