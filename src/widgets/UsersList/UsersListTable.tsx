@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
 import { useTranslation } from '@/shared/lib/hooks'
 import { SortDirection, User } from '@/types'
