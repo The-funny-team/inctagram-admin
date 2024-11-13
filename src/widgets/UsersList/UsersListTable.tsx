@@ -1,5 +1,5 @@
 import { BanIcon, SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
-import { ROUTES_URL } from '@/shared/const'
+import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import { SortDirection, User } from '@/types'
 import { UsersListDropdown } from '@/widgets/UsersListDropdown'
@@ -91,7 +91,8 @@ export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: 
                 <Typography
                   as={'a'}
                   className={s.linkCell}
-                  href={`${ROUTES_URL.USER}/${user.id}`}
+                  href={`${LINK_TO_PROFILE_PUBLIC_PAGE}/${user.id}`}
+                  target={'_blank'}
                   variant={'regularText14'}
                 >
                   {user.userName}_link

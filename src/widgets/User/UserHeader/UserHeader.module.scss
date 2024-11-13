@@ -29,14 +29,9 @@
       gap: 24px;
 
       div {
-        p:last-child {
+        a:last-child {
           line-height: var(--line-height-s);
           color: var(--color-light-900);
-          text-decoration: underline;
-
-          &:hover {
-            cursor: pointer;
-          }
         }
       }
     }

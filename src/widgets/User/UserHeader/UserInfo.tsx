@@ -1,4 +1,5 @@
 import { useGetUserInfoQuery } from '@/queries/user/user.generated'
+import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import { User } from '@/types'
 import { Avatar, Typography } from '@funnyteam/ui-kit'
@@ -26,10 +27,6 @@ export const UserInfo = () => {
       userInfo.profile.avatars[0].url) ||
     ''
 
-  const onRedirectToProfile = () => {
-    window.open(`https://funny-inctagram.site/public-profile/${id}`, '_blank')
-  }
-
   if (loading) {
     return null
   }
@@ -40,7 +37,12 @@ export const UserInfo = () => {
         <Avatar className={s.avatar} size={60} src={usersAvatar} userName={userInfo.userName} />
         <div>
           <Typography variant={'h1'}>{userInfo.userName}</Typography>
-          <Typography onClick={onRedirectToProfile} variant={'regularText14'}>
+          <Typography
+            as={'a'}
+            href={`${LINK_TO_PROFILE_PUBLIC_PAGE}/${id}`}
+            target={'_blank'}
+            variant={'regularText14'}
+          >
             {'profile link'}
           </Typography>
         </div>
