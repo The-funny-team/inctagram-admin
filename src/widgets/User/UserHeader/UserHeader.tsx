@@ -3,14 +3,12 @@ import { ROUTES_URL } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import { UserInfo } from '@/widgets/User/UserHeader/UserInfo'
 import { Typography } from '@funnyteam/ui-kit'
-import { useRouter } from 'next/router'
 
 import s from './UserHeader.module.scss'
 
 export const UserHeader = () => {
-  const { text } = useTranslation()
+  const { router, text } = useTranslation()
   const t = text.pages.user.header
-  const router = useRouter()
 
   const redirectHandler = () => {
     void router.push(ROUTES_URL.USERS_LIST)
