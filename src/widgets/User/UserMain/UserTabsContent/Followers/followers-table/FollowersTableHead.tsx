@@ -1,4 +1,5 @@
 import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
+import { useTranslation } from '@/shared/lib/hooks'
 import { SortDirection } from '@/types'
 import { SortByType } from '@/widgets/UsersList/UsersList'
 import { TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
@@ -12,6 +13,8 @@ type Props = {
 }
 
 export const FollowersTableHead = ({ direction, onDirectionChange, sortBy }: Props) => {
+  const { text } = useTranslation()
+  const t = text.pages.user.tabs.followers.tableHead
   const toggleSort = (newSortBy: SortByType) => {
     const newDirection = direction === SortDirection.Asc ? SortDirection.Desc : SortDirection.Asc
 
@@ -22,12 +25,12 @@ export const FollowersTableHead = ({ direction, onDirectionChange, sortBy }: Pro
     <TableHead>
       <TableRow>
         <TableHeadCell>
-          <Typography variant={'boldText14'}>UserId</Typography>
+          <Typography variant={'boldText14'}>{t.userId}</Typography>
         </TableHeadCell>
         <TableHeadCell>
           <div className={s.sortCell} onClick={() => toggleSort('userName')}>
             <Typography as={'span'} variant={'boldText14'}>
-              UserName
+              {t.userName}
             </Typography>
             {direction === SortDirection.Asc && sortBy === 'userName' ? (
               <SortActiveIcon />
@@ -37,12 +40,12 @@ export const FollowersTableHead = ({ direction, onDirectionChange, sortBy }: Pro
           </div>
         </TableHeadCell>
         <TableHeadCell>
-          <Typography variant={'boldText14'}>profileLink</Typography>
+          <Typography variant={'boldText14'}>{t.profileLink}</Typography>
         </TableHeadCell>
         <TableHeadCell>
           <div className={s.sortCell} onClick={() => toggleSort('createdAt')}>
             <Typography as={'span'} variant={'boldText14'}>
-              Subscription Date
+              {t.subscriptionDate}
             </Typography>
             {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
               <SortActiveIcon />

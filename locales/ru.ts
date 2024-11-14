@@ -41,6 +41,12 @@ export const ru: LocaleType = {
       tabs: {
         followers: {
           emptyTab: 'Пока нет подписчиков',
+          tableHead: {
+            profileLink: 'Ссылка на профиль',
+            subscriptionDate: 'Дата подписки',
+            userId: 'ID пользователя',
+            userName: 'Имя пользователя',
+          },
           title: 'Подписчики',
         },
         following: {

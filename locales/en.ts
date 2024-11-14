@@ -38,6 +38,12 @@ export const en = {
       tabs: {
         followers: {
           emptyTab: 'No followers yet',
+          tableHead: {
+            profileLink: 'Profile link',
+            subscriptionDate: 'Subscription Date',
+            userId: 'User ID',
+            userName: 'Username',
+          },
           title: 'Followers',
         },
         following: {
