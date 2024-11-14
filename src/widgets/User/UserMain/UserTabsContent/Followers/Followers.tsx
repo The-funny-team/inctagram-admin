@@ -28,9 +28,7 @@ export const Followers = () => {
           onDirectionChange={handleDirectionChange}
           sortBy={sortBy}
         />
-        <TableBody>
-          <FollowersTableRow />
-        </TableBody>
+        <TableBody>{/*<FollowersTableRow />*/}</TableBody>
       </Table>
     </div>
   )

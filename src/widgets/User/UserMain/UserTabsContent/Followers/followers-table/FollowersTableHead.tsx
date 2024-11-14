@@ -22,39 +22,41 @@ export const FollowersTableHead = ({ direction, onDirectionChange, sortBy }: Pro
   }
 
   return (
-    <TableHead>
-      <TableRow>
-        <TableHeadCell>
-          <Typography variant={'boldText14'}>{t.userId}</Typography>
-        </TableHeadCell>
-        <TableHeadCell>
-          <div className={s.sortCell} onClick={() => toggleSort('userName')}>
-            <Typography as={'span'} variant={'boldText14'}>
-              {t.userName}
-            </Typography>
-            {direction === SortDirection.Asc && sortBy === 'userName' ? (
-              <SortActiveIcon />
-            ) : (
-              <SortDefaultIcon />
-            )}
-          </div>
-        </TableHeadCell>
-        <TableHeadCell>
-          <Typography variant={'boldText14'}>{t.profileLink}</Typography>
-        </TableHeadCell>
-        <TableHeadCell>
-          <div className={s.sortCell} onClick={() => toggleSort('createdAt')}>
-            <Typography as={'span'} variant={'boldText14'}>
-              {t.subscriptionDate}
-            </Typography>
-            {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
-              <SortActiveIcon />
-            ) : (
-              <SortDefaultIcon />
-            )}
-          </div>
-        </TableHeadCell>
-      </TableRow>
-    </TableHead>
+    <>
+      <TableHead>
+        <TableRow>
+          <TableHeadCell>
+            <Typography variant={'boldText14'}>{t.userId}</Typography>
+          </TableHeadCell>
+          <TableHeadCell>
+            <div className={s.sortCell} onClick={() => toggleSort('userName')}>
+              <Typography as={'span'} variant={'boldText14'}>
+                {t.userName}
+              </Typography>
+              {direction === SortDirection.Asc && sortBy === 'userName' ? (
+                <SortActiveIcon />
+              ) : (
+                <SortDefaultIcon />
+              )}
+            </div>
+          </TableHeadCell>
+          <TableHeadCell>
+            <Typography variant={'boldText14'}>{t.profileLink}</Typography>
+          </TableHeadCell>
+          <TableHeadCell>
+            <div className={s.sortCell} onClick={() => toggleSort('createdAt')}>
+              <Typography as={'span'} variant={'boldText14'}>
+                {t.subscriptionDate}
+              </Typography>
+              {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
+                <SortActiveIcon />
+              ) : (
+                <SortDefaultIcon />
+              )}
+            </div>
+          </TableHeadCell>
+        </TableRow>
+      </TableHead>
+    </>
   )
 }
