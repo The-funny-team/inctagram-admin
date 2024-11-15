@@ -2,21 +2,22 @@ import { useEffect } from 'react'
 
 import { ROUTES_URL } from '@/shared/const'
 import { getRootLayout } from '@/shared/layouts'
+import { loadFromLocalStorage } from '@/shared/lib/helpers'
 import { useRouter } from 'next/router'
 
 import '@funnyteam/ui-kit/style.css'
 
 const Page = () => {
-  const auth = true // temporary variable
+  const isAuth = loadFromLocalStorage('isAuth', false)
   const router = useRouter()
 
   useEffect(() => {
-    if (!auth) {
+    if (!isAuth) {
       void router.push(ROUTES_URL.SIGN_IN)
     } else {
       void router.push(ROUTES_URL.USERS_LIST)
     }
-  }, [auth, router])
+  }, [isAuth, router])
 
   return null
 }
