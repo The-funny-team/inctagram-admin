@@ -1,1 +1,1 @@
-export { ProtectionWrapper } from './ProtectedWrapper'
+export { ProtectedWrapper } from './ProtectedWrapper'

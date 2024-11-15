@@ -5,7 +5,7 @@ import { loadFromLocalStorage } from '@/shared/lib/helpers'
 import { Loader } from '@/shared/ui/Loader'
 import { useRouter } from 'next/router'
 
-export const ProtectionWrapper = ({ children }: PropsWithChildren<{}>) => {
+export const ProtectedWrapper = ({ children }: PropsWithChildren<{}>) => {
   const isAuth = loadFromLocalStorage('isAuth', '')
   const router = useRouter()
 
