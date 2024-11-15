@@ -27,6 +27,7 @@ export const SignIn = () => {
       .then(() => {
         saveToLocalStorage('username', data.email)
         saveToLocalStorage('password', data.password)
+        saveToLocalStorage('isAuth', true)
         void router.push(ROUTES_URL.USERS_LIST)
       })
       .catch(err => setError('root', { message: error?.message }))
