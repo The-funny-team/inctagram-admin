@@ -1,4 +1,4 @@
-import { getProtectedNavbarLayout } from '@/shared/layouts/ProtectedNavBarLayout'
+import { getProtectedNavbarLayout } from '@/shared/layouts'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 import { UsersList } from '@/widgets/UsersList'
 

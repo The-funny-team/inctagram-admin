@@ -1,13 +1,15 @@
-import { getRootLayout } from '@/shared/layouts'
+import { ProtectedWrapper, getRootLayout } from '@/shared/layouts'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 import { User } from '@/widgets/User'
 
 const UserPage = () => (
   <>
-    <HeadMeta title={'Posts list'} />
-    <main>
-      <User />
-    </main>
+    <ProtectedWrapper>
+      <HeadMeta title={'Posts list'} />
+      <main>
+        <User />
+      </main>
+    </ProtectedWrapper>
   </>
 )
 
