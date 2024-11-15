@@ -1,4 +1,4 @@
-import { getNavbarLayout } from '@/shared/layouts/NavBarLayout/NavBarLayout'
+import { getProtectedNavbarLayout } from '@/shared/layouts/ProtectedNavBarLayout'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 
 const PostsListPage = () => (
@@ -8,5 +8,5 @@ const PostsListPage = () => (
   </>
 )
 
-PostsListPage.getLayout = getNavbarLayout
+PostsListPage.getLayout = getProtectedNavbarLayout
 export default PostsListPage
