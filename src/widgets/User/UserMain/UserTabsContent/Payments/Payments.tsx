@@ -5,7 +5,7 @@ import { PAGINATION_OPTIONS } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import { Loader } from '@/shared/ui/Loader'
 import { SubscriptionByPaymentModel } from '@/types'
-import { Pagination } from '@funnyteam/ui-kit'
+import { Pagination, Typography } from '@funnyteam/ui-kit'
 
 import s from './Payments.module.scss'
 
@@ -61,7 +61,9 @@ export const Payments = ({ userId }: Props) => {
           </div>
         </div>
       ) : (
-        <div>{t.emptyTab}</div>
+        <div style={{ textAlign: 'center' }}>
+          <Typography variant={'large'}>{t.emptyTab}</Typography>
+        </div>
       )}
     </div>
   )
