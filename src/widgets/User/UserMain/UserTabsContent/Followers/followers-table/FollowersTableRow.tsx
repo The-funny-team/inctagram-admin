@@ -3,14 +3,16 @@ import { Follow } from '@/types'
 import { TableCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from '@/widgets/UsersList/UsersList.module.scss'
-
-export const FollowersTableRow = (follower: Follow) => {
+type Props = {
+  follower: Follow
+}
+export const FollowersTableRow = ({ follower }: Props) => {
   return (
     <>
       <TableRow key={follower.id}>
         <TableCell>
           <div className={s.idCell}>
-            <Typography variant={'regularText14'}>{follower.id}</Typography>
+            <Typography variant={'regularText14'}>{follower.userId}</Typography>
           </div>
         </TableCell>
         <TableCell>
