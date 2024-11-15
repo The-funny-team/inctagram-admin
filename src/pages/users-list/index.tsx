@@ -1,4 +1,4 @@
-import { getNavbarLayout } from '@/shared/layouts/NavBarLayout/NavBarLayout'
+import { getProtectedNavbarLayout } from '@/shared/layouts'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 import { UsersList } from '@/widgets/UsersList'
 
@@ -9,5 +9,5 @@ const UsersListPage = () => (
   </>
 )
 
-UsersListPage.getLayout = getNavbarLayout
+UsersListPage.getLayout = getProtectedNavbarLayout
 export default UsersListPage

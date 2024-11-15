@@ -1,4 +1,4 @@
-import { getNavbarLayout } from '@/shared/layouts/NavBarLayout/NavBarLayout'
+import { getProtectedNavbarLayout } from '@/shared/layouts'
 import { HeadMeta } from '@/shared/ui/HeadMeta'
 
 const PaymentsListPage = () => (
@@ -8,5 +8,5 @@ const PaymentsListPage = () => (
   </>
 )
 
-PaymentsListPage.getLayout = getNavbarLayout
+PaymentsListPage.getLayout = getProtectedNavbarLayout
 export default PaymentsListPage
