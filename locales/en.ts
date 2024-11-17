@@ -36,14 +36,16 @@ export const en = {
         userId: 'UserID',
       },
       tabs: {
-        followers: {
-          emptyTab: 'No followers yet',
+        follow: {
           tableHead: {
             profileLink: 'Profile link',
             subscriptionDate: 'Subscription Date',
             userId: 'User ID',
             userName: 'Username',
           },
+        },
+        followers: {
+          emptyTab: 'No followers yet',
           title: 'Followers',
         },
         following: {
