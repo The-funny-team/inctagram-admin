@@ -37,7 +37,7 @@ export const UserMain = () => {
         {curTab === TabContentType.UPLOADED && <Uploaded userId={Number(id)} />}
         {curTab === TabContentType.PAYMENTS && <Payments userId={Number(id)} />}
         {curTab === TabContentType.FOLLOWERS && <Followers userId={Number(id)} />}
-        {curTab === TabContentType.FOLLOWING && <Following />}
+        {curTab === TabContentType.FOLLOWING && <Following userId={Number(id)} />}
       </div>
     </div>
   )
