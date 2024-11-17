@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import {
   FilledPaymentIcon,
   FilledPostsIcon,
@@ -23,8 +21,6 @@ type Props = {
 }
 
 export const NavBar = ({ className }: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-
   const {
     router,
     text: {
@@ -34,16 +30,12 @@ export const NavBar = ({ className }: Props) => {
 
   const pathname = '/'.concat(router.pathname.split('/')[1])
 
-  const shouldActive = (value: boolean) => {
-    return !isOpen && value
-  }
-
   return (
     <aside className={clsx(s.root, className)}>
       <nav className={s.nav}>
         <Button
           as={Link}
-          className={clsx(s.button, shouldActive(pathname === ROUTES_URL.USERS_LIST) && s.active)}
+          className={clsx(s.button, pathname === ROUTES_URL.USERS_LIST && s.active)}
           href={ROUTES_URL.USERS_LIST}
         >
           {pathname === ROUTES_URL.USERS_LIST ? <FilledUserIcon /> : <UserIcon />}
@@ -51,38 +43,27 @@ export const NavBar = ({ className }: Props) => {
         </Button>
         <Button
           as={Link}
-          className={clsx(s.button, shouldActive(pathname === ROUTES_URL.STATISTICS) && s.active)}
+          className={clsx(s.button, pathname === ROUTES_URL.STATISTICS && s.active)}
           href={ROUTES_URL.STATISTICS}
         >
-          {shouldActive(pathname === ROUTES_URL.STATISTICS) ? (
-            <FilledStatisticIcon />
-          ) : (
-            <StatisticIcon />
-          )}
+          {pathname === ROUTES_URL.STATISTICS ? <FilledStatisticIcon /> : <StatisticIcon />}
           {t.statistics}
         </Button>
 
         <Button
           as={Link}
-          className={clsx(
-            s.button,
-            shouldActive(pathname === ROUTES_URL.PAYMENTS_LIST) && s.active
-          )}
+          className={clsx(s.button, pathname === ROUTES_URL.PAYMENTS_LIST && s.active)}
           href={ROUTES_URL.PAYMENTS_LIST}
         >
-          {shouldActive(pathname === ROUTES_URL.PAYMENTS_LIST) ? (
-            <FilledPaymentIcon />
-          ) : (
-            <PaymentIcon />
-          )}
+          {pathname === ROUTES_URL.PAYMENTS_LIST ? <FilledPaymentIcon /> : <PaymentIcon />}
           {t.paymentsList}
         </Button>
         <Button
           as={Link}
-          className={clsx(s.button, shouldActive(pathname === ROUTES_URL.POSTS_LIST) && s.active)}
+          className={clsx(s.button, pathname === ROUTES_URL.POSTS_LIST && s.active)}
           href={ROUTES_URL.POSTS_LIST}
         >
-          {shouldActive(pathname === ROUTES_URL.POSTS_LIST) ? <FilledPostsIcon /> : <PostsIcon />}
+          {pathname === ROUTES_URL.POSTS_LIST ? <FilledPostsIcon /> : <PostsIcon />}
           {t.postsList}
         </Button>
       </nav>
