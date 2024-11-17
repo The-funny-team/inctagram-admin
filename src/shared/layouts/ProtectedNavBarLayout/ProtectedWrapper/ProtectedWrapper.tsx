@@ -14,9 +14,5 @@ export const ProtectedWrapper = ({ children }: PropsWithChildren<{}>) => {
     }
   }, [isAuth, router])
 
-  if (!isAuth) {
-    return null
-  }
-
   return <>{children}</>
 }
