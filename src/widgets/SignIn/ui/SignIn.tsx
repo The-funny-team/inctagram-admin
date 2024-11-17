@@ -22,15 +22,20 @@ export const SignIn = () => {
     setError,
   } = useSignIn(text.validation)
 
-  const onFormSubmit = handleSubmit((data: SignInFormValuesType) => {
-    login({ variables: { email: data.email, password: data.password } })
-      .then(() => {
+  const onFormSubmit = handleSubmit(async (data: SignInFormValuesType) => {
+    try {
+      const response = await login({ variables: { email: data.email, password: data.password } })
+      const isAuth = response.data?.loginAdmin.logged
+
+      if (isAuth) {
         saveToLocalStorage('username', data.email)
         saveToLocalStorage('password', data.password)
-        saveToLocalStorage('isAuth', true)
+        saveToLocalStorage('isAuth', isAuth)
         void router.push(ROUTES_URL.USERS_LIST)
-      })
-      .catch(err => setError('root', { message: error?.message }))
+      }
+    } catch (err) {
+      setError('root', { message: error?.message })
+    }
   })
 
   const classNames = {
