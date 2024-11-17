@@ -4,7 +4,7 @@ import { SortDirection } from '@/types'
 import { SortByType } from '@/widgets/UsersList/UsersList'
 import { TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
-import s from './FollowersTable.module.scss'
+import s from 'src/widgets/User/UserMain/UserTabsContent/Follow/follow-table/FollowTable.module.scss'
 
 type Props = {
   direction: SortDirection
@@ -12,9 +12,9 @@ type Props = {
   sortBy: SortByType
 }
 
-export const FollowersTableHead = ({ direction, onDirectionChange, sortBy }: Props) => {
+export const FollowTableHead = ({ direction, onDirectionChange, sortBy }: Props) => {
   const { text } = useTranslation()
-  const t = text.pages.user.tabs.followers.tableHead
+  const t = text.pages.user.tabs.follow.tableHead
   const toggleSort = (newSortBy: SortByType) => {
     const newDirection = direction === SortDirection.Asc ? SortDirection.Desc : SortDirection.Asc
 

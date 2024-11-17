@@ -6,7 +6,7 @@ import s from '@/widgets/UsersList/UsersList.module.scss'
 type Props = {
   follower: Follow
 }
-export const FollowersTableRow = ({ follower }: Props) => {
+export const FollowTableRow = ({ follower }: Props) => {
   return (
     <>
       <TableRow key={follower.id}>
