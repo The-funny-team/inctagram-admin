@@ -1,10 +1,14 @@
 .rootBanModal {
   width: 378px;
-  height: 288px;
+  height: auto;
 
   .selectReason {
     margin: 18px 0 48px;
     background-color: inherit;
+
+    &[data-state='open'] {
+      background-color: var(--color-dark-500);
+    }
   }
 
   .buttonsBlock {
