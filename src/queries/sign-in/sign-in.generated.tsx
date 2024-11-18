@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
 import * as Types from '../../types'
+
 const defaultOptions = {} as const
 
 export type SignInMutationVariables = Types.Exact<{
@@ -48,6 +49,7 @@ export function useSignInMutation(
 
   return Apollo.useMutation<SignInMutation, SignInMutationVariables>(SignInDocument, options)
 }
+
 export type SignInMutationHookResult = ReturnType<typeof useSignInMutation>
 export type SignInMutationResult = Apollo.MutationResult<SignInMutation>
 export type SignInMutationOptions = Apollo.BaseMutationOptions<
