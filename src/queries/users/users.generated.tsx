@@ -1,45 +1,65 @@
-import * as Types from '../../types';
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
 
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-const defaultOptions = {} as const;
+import * as Types from '../../types'
+
+const defaultOptions = {} as const
+
 export type GetAllUsersQueryVariables = Types.Exact<{
-  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
-  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
-  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
-  sortDirection?: Types.InputMaybe<Types.SortDirection>;
-  searchTerm?: Types.InputMaybe<Types.Scalars['String']['input']>;
-  statusFilter?: Types.InputMaybe<Types.UserBlockStatus>;
-}>;
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>
+  searchTerm?: Types.InputMaybe<Types.Scalars['String']['input']>
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>
+  sortDirection?: Types.InputMaybe<Types.SortDirection>
+  statusFilter?: Types.InputMaybe<Types.UserBlockStatus>
+}>
 
-
-export type GetAllUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', pagination: { __typename?: 'PaginationModel', totalCount: number }, users: Array<{ __typename?: 'User', userName: string, id: number, createdAt: any, userBan?: { __typename?: 'UserBan', reason: string } | null }> } };
-
+export type GetAllUsersQuery = {
+  __typename?: 'Query'
+  getUsers: {
+    __typename?: 'UsersPaginationModel'
+    pagination: { __typename?: 'PaginationModel'; totalCount: number }
+    users: Array<{
+      __typename?: 'User'
+      createdAt: any
+      id: number
+      userBan?: { __typename?: 'UserBan'; reason: string } | null
+      userName: string
+    }>
+  }
+}
 
 export const GetAllUsersDocument = gql`
-    query getAllUsers($pageNumber: Int, $pageSize: Int, $sortBy: String, $sortDirection: SortDirection, $searchTerm: String, $statusFilter: UserBlockStatus) {
-  getUsers(
-    pageNumber: $pageNumber
-    pageSize: $pageSize
-    sortBy: $sortBy
-    sortDirection: $sortDirection
-    searchTerm: $searchTerm
-    statusFilter: $statusFilter
+  query getAllUsers(
+    $pageNumber: Int
+    $pageSize: Int
+    $sortBy: String
+    $sortDirection: SortDirection
+    $searchTerm: String
+    $statusFilter: UserBlockStatus
   ) {
-    pagination {
-      totalCount
-    }
-    users {
-      userName
-      id
-      createdAt
-      userBan {
-        reason
+    getUsers(
+      pageNumber: $pageNumber
+      pageSize: $pageSize
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+      searchTerm: $searchTerm
+      statusFilter: $statusFilter
+    ) {
+      pagination {
+        totalCount
+      }
+      users {
+        userName
+        id
+        createdAt
+        userBan {
+          reason
+        }
       }
     }
   }
-}
-    `;
+`
 
 /**
  * __useGetAllUsersQuery__
@@ -62,19 +82,40 @@ export const GetAllUsersDocument = gql`
  *   },
  * });
  */
-export function useGetAllUsersQuery(baseOptions?: Apollo.QueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options);
-      }
-export function useGetAllUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options);
-        }
-export function useGetAllUsersSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>) {
-          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options);
-        }
-export type GetAllUsersQueryHookResult = ReturnType<typeof useGetAllUsersQuery>;
-export type GetAllUsersLazyQueryHookResult = ReturnType<typeof useGetAllUsersLazyQuery>;
-export type GetAllUsersSuspenseQueryHookResult = ReturnType<typeof useGetAllUsersSuspenseQuery>;
-export type GetAllUsersQueryResult = Apollo.QueryResult<GetAllUsersQuery, GetAllUsersQueryVariables>;
+export function useGetAllUsersQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options)
+}
+
+export function useGetAllUsersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useLazyQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(
+    GetAllUsersDocument,
+    options
+  )
+}
+
+export function useGetAllUsersSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions }
+
+  return Apollo.useSuspenseQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(
+    GetAllUsersDocument,
+    options
+  )
+}
+
+export type GetAllUsersQueryHookResult = ReturnType<typeof useGetAllUsersQuery>
+export type GetAllUsersLazyQueryHookResult = ReturnType<typeof useGetAllUsersLazyQuery>
+export type GetAllUsersSuspenseQueryHookResult = ReturnType<typeof useGetAllUsersSuspenseQuery>
+export type GetAllUsersQueryResult = Apollo.QueryResult<GetAllUsersQuery, GetAllUsersQueryVariables>
