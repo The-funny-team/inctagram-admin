@@ -21,6 +21,10 @@ export const en = {
       title: 'Delete user',
     },
     noButton: 'No',
+    unBanUserModal: {
+      getQuestion: `Are you sure want to un-ban, <1></1>`,
+      title: 'Un-ban user',
+    },
     yesButton: 'Yes',
   },
   pages: {

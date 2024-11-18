@@ -24,6 +24,10 @@ export const ru: LocaleType = {
       title: 'Удалить пользователя',
     },
     noButton: 'Нет',
+    unBanUserModal: {
+      getQuestion: `Вы уверены что хотите разблокировать пользователя <1></1>`,
+      title: 'Разблокировать пользователя',
+    },
     yesButton: 'Да',
   },
   pages: {
