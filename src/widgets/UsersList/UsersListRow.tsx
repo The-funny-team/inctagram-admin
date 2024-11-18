@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
+import { BanUserModal } from '@/features/user-modals/BanUserModal'
 import { DeleteUserModal } from '@/features/user-modals/DeleteUserModal'
 import { BanIcon } from '@/shared/assets'
 import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
 import { User } from '@/types'
-import { UsersListDropdown } from '@/widgets/UsersListDropdown'
+import { UsersListDropdown } from '@/widgets/UsersList/UsersListDropdown'
 import { TableCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
@@ -15,10 +16,17 @@ type PropsType = {
 
 export const UsersListRow = ({ user }: PropsType) => {
   const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(false)
+  const [isOpenBanUserModal, setIsOpenBanUserModal] = useState(false)
+  const [isOpenUnBanUserModal, setIsOpenUnBanUserModal] = useState(false)
   const deleteUserHandler = () => {
     setIsOpenDeleteUserModal(true)
   }
-  const banUserHandler = () => {}
+  const banUserHandler = () => {
+    setIsOpenBanUserModal(true)
+  }
+  const unBanUserHandler = () => {
+    setIsOpenUnBanUserModal(true)
+  }
 
   return (
     <>
@@ -55,8 +63,10 @@ export const UsersListRow = ({ user }: PropsType) => {
         <TableCell>
           <div className={s.dropDownCell}>
             <UsersListDropdown
+              isUserBan={Boolean(user.userBan?.reason)}
               onBanUser={banUserHandler}
               onDeleteUser={deleteUserHandler}
+              onUnBanUser={unBanUserHandler}
               userId={user.id}
             />
           </div>
@@ -66,6 +76,14 @@ export const UsersListRow = ({ user }: PropsType) => {
         <DeleteUserModal
           isOpenDeleteUserModal={isOpenDeleteUserModal}
           setIsOpenDeleteUserModal={setIsOpenDeleteUserModal}
+          userId={user.id}
+          userName={user.userName}
+        />
+      )}
+      {isOpenBanUserModal && (
+        <BanUserModal
+          isOpenBanModal={isOpenBanUserModal}
+          setIsOpenBanModal={setIsOpenBanUserModal}
           userId={user.id}
           userName={user.userName}
         />
