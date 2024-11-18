@@ -12,7 +12,7 @@ export const en = {
       advertisingPlacement: 'Advertising placement',
       anotherReason: 'Another reason',
       badBehavior: 'Bad behavior',
-      getQuestion: `Are you sure to ban this user, <1></1>`,
+      getQuestion: `Are you sure you want to ban this user, <1></1>`,
       reasonForBan: 'Reason for ban',
       title: 'Ban user',
     },
@@ -74,6 +74,7 @@ export const en = {
         banUser: 'Ban in the system',
         deleteUser: 'Delete User',
         moreInfo: 'More Information',
+        uBanUser: 'Un-ban in the system',
       },
       select: {
         blocked: 'Blocked',

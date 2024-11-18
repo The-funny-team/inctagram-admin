@@ -77,6 +77,7 @@ export const ru: LocaleType = {
         banUser: 'Запрет доступа в системе',
         deleteUser: 'Удалить пользователя',
         moreInfo: 'Дополнительная информация',
+        uBanUser: 'Разрешить доступ в системе',
       },
       select: {
         blocked: 'Заблокированные',
