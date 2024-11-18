@@ -9,15 +9,23 @@ import {
   Typography,
 } from '@funnyteam/ui-kit'
 
-import s from 'src/widgets/UsersListDropdown/ui/UsersListDropdown.module.scss'
+import s from './UsersListDropdown.module.scss'
 
 type Props = {
+  isUserBan: boolean
   onBanUser: () => void
   onDeleteUser: () => void
+  onUnBanUser: () => void
   userId: number
 }
 
-export const UsersListDropdown = ({ onBanUser, onDeleteUser, userId }: Props) => {
+export const UsersListDropdown = ({
+  isUserBan,
+  onBanUser,
+  onDeleteUser,
+  onUnBanUser,
+  userId,
+}: Props) => {
   const { router, text } = useTranslation()
   const t = text.pages.usersList.dropdown
 
@@ -39,9 +47,15 @@ export const UsersListDropdown = ({ onBanUser, onDeleteUser, userId }: Props) =>
         </DropdownMenuItem>
         <DropdownMenuItem className={s.menuItem}>
           <BanIcon />
-          <Typography as={'span'} onClick={onBanUser} variant={'regularText14'}>
-            {t.banUser}
-          </Typography>
+          {!isUserBan ? (
+            <Typography as={'span'} onClick={onBanUser} variant={'regularText14'}>
+              {t.banUser}
+            </Typography>
+          ) : (
+            <Typography as={'span'} onClick={onUnBanUser} variant={'regularText14'}>
+              {t.uBanUser}
+            </Typography>
+          )}
         </DropdownMenuItem>
         <DropdownMenuItem className={s.menuItem}>
           <DotsIcon />
