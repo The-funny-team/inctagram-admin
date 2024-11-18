@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-import { BanUserModal } from '@/features/user-modals/BanUserModal'
-import { DeleteUserModal } from '@/features/user-modals/DeleteUserModal'
+import { BanUserModal, DeleteUserModal, UnBanModal } from '@/features/user-modals'
 import { BanIcon } from '@/shared/assets'
 import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
 import { User } from '@/types'
@@ -84,6 +83,14 @@ export const UsersListRow = ({ user }: PropsType) => {
         <BanUserModal
           isOpenBanModal={isOpenBanUserModal}
           setIsOpenBanModal={setIsOpenBanUserModal}
+          userId={user.id}
+          userName={user.userName}
+        />
+      )}
+      {isOpenUnBanUserModal && (
+        <UnBanModal
+          isOpenUnBanModal={isOpenUnBanUserModal}
+          setIsOpenUnBanModal={setIsOpenUnBanUserModal}
           userId={user.id}
           userName={user.userName}
         />
