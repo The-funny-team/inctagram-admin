@@ -1,8 +1,9 @@
 import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
 import { SortDirection } from '@/types'
-import { Table, TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
+import { Table, TableBody, TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from './PaymentsListTable.module.scss'
+import { PaymentsListRow } from '@/widgets/PaymentsList/PaymentsListTable/PaymentsListRow'
 
 export type SortPaymentsType = 'amount' | 'createdAt' | 'paymentMethod' | 'userName'
 
@@ -79,6 +80,9 @@ export const PaymentsListTable = ({ direction, onDirectionChange, sortBy }: Prop
             </TableHeadCell>
           </TableRow>
         </TableHead>
+        <TableBody>
+          <PaymentsListRow></PaymentsListRow>
+        </TableBody>
       </Table>
     </div>
   )
