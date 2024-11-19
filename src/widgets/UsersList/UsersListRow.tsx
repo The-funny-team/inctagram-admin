@@ -10,10 +10,11 @@ import { TableCell, TableRow, Typography } from '@funnyteam/ui-kit'
 import s from './UsersList.module.scss'
 
 type PropsType = {
+  refetch: () => void
   user: Omit<User, 'email' | 'profile'>
 }
 
-export const UsersListRow = ({ user }: PropsType) => {
+export const UsersListRow = ({ refetch, user }: PropsType) => {
   const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(false)
   const [isOpenBanUserModal, setIsOpenBanUserModal] = useState(false)
   const [isOpenUnBanUserModal, setIsOpenUnBanUserModal] = useState(false)
@@ -94,6 +95,7 @@ export const UsersListRow = ({ user }: PropsType) => {
       {isOpenUnBanUserModal && (
         <UnBanModal
           isOpenUnBanModal={isOpenUnBanUserModal}
+          refetch={refetch}
           setIsOpenUnBanModal={setIsOpenUnBanUserModal}
           setShowBanIcon={showBanIconHandler}
           userId={user.id}

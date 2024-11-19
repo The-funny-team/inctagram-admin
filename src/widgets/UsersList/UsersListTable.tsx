@@ -11,11 +11,18 @@ import { SortByType } from './UsersList'
 type PropsType = {
   direction: SortDirection
   onDirectionChange: (sortParams: { newDirection: SortDirection; newSortBy: SortByType }) => void
+  refetchUsers: () => void
   sortBy: SortByType
   users: Omit<User, 'email' | 'profile'>[]
 }
 
-export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: PropsType) => {
+export const UsersListTable = ({
+  direction,
+  onDirectionChange,
+  refetchUsers,
+  sortBy,
+  users,
+}: PropsType) => {
   const { text } = useTranslation()
   const t = text.pages.usersList.tableHead
   const toggleSort = (newSortBy: SortByType) => {
@@ -64,7 +71,7 @@ export const UsersListTable = ({ direction, onDirectionChange, sortBy, users }: 
         </TableHead>
         <TableBody>
           {users.map(user => (
-            <UsersListRow key={user.id} user={user} />
+            <UsersListRow key={user.id} refetch={refetchUsers} user={user} />
           ))}
         </TableBody>
       </Table>

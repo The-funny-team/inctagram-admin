@@ -9,6 +9,7 @@ import s from './UnBanModal.module.scss'
 
 type Props = {
   isOpenUnBanModal: boolean
+  refetch: () => void
   setIsOpenUnBanModal: (isOpenBanModal: boolean) => void
   setShowBanIcon: (value: boolean) => void
   userId: number
@@ -17,6 +18,7 @@ type Props = {
 
 export const UnBanModal = ({
   isOpenUnBanModal,
+  refetch,
   setIsOpenUnBanModal,
   setShowBanIcon,
   userId,
@@ -32,6 +34,7 @@ export const UnBanModal = ({
       await unban({
         variables: { userId },
       })
+      refetch()
       setIsOpenUnBanModal(false)
       setShowBanIcon(false)
     } catch (err) {
