@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
+import { useBanUserMutation } from '@/queries/user/user-ban.generated'
 import { useTranslation } from '@/shared/lib/hooks'
 import { Trans } from '@/shared/ui/Trans'
 import { Button, Modal, Select, Typography } from '@funnyteam/ui-kit'
 
 import s from './BanUserModal.module.scss'
+
 type Props = {
   isOpenBanModal: boolean
   setIsOpenBanModal: (isOpenBanModal: boolean) => void
@@ -15,25 +18,36 @@ type Props = {
 export const BanUserModal = ({ isOpenBanModal, setIsOpenBanModal, userId, userName }: Props) => {
   const { text } = useTranslation()
 
-  const [reasonBan, setReasonBan] = useState('')
+  const [reasonBan, setReasonBan] = useState('reason')
+  const [banUser, { loading }] = useBanUserMutation()
 
   const reasonForBan = [
     {
-      label: text.modal.banUserModal.anotherReason,
-      value: 'anotherReason',
-    },
-    {
       label: text.modal.banUserModal.badBehavior,
-      value: 'badBehavior',
+      value: 'Bad behavior',
     },
     {
       label: text.modal.banUserModal.advertisingPlacement,
-      value: 'advertising',
+      value: 'Advertising placement',
+    },
+    {
+      label: text.modal.banUserModal.anotherReason,
+      value: 'Another reason',
     },
   ]
 
-  const banUserHandler = () => {
-    console.log('sent request to ban -' + reasonBan)
+  const banUserHandler = async () => {
+    try {
+      await banUser({
+        variables: {
+          banReason: reasonBan,
+          userId: userId,
+        },
+      })
+      setIsOpenBanModal(false)
+    } catch (err) {
+      toast.error('error')
+    }
   }
 
   return (
@@ -63,10 +77,11 @@ export const BanUserModal = ({ isOpenBanModal, setIsOpenBanModal, userId, userNa
         value={reasonBan}
       />
       <div className={s.buttonsBlock}>
-        <Button fullWidth={false} onClick={banUserHandler} variant={'tertiary'}>
+        <Button disabled={loading} fullWidth={false} onClick={banUserHandler} variant={'tertiary'}>
           {text.modal.yesButton}
         </Button>
         <Button
+          disabled={loading}
           fullWidth={false}
           onClick={() => {
             setIsOpenBanModal(false)
