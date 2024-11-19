@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-import { BanUserModal } from '@/features/user-modals/BanUserModal'
-import { DeleteUserModal } from '@/features/user-modals/DeleteUserModal'
+import { BanUserModal, DeleteUserModal, UnBanModal } from '@/features/user-modals'
 import { BanIcon } from '@/shared/assets'
 import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
 import { User } from '@/types'
@@ -11,13 +10,18 @@ import { TableCell, TableRow, Typography } from '@funnyteam/ui-kit'
 import s from './UsersList.module.scss'
 
 type PropsType = {
+  refetch: () => void
   user: Omit<User, 'email' | 'profile'>
 }
 
-export const UsersListRow = ({ user }: PropsType) => {
+export const UsersListRow = ({ refetch, user }: PropsType) => {
   const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(false)
   const [isOpenBanUserModal, setIsOpenBanUserModal] = useState(false)
   const [isOpenUnBanUserModal, setIsOpenUnBanUserModal] = useState(false)
+  const [isShowBanIcon, setIsShowBanIcon] = useState<boolean>(!!user.userBan?.reason)
+  const showBanIconHandler = (value: boolean) => {
+    setIsShowBanIcon(value)
+  }
   const deleteUserHandler = () => {
     setIsOpenDeleteUserModal(true)
   }
@@ -33,7 +37,7 @@ export const UsersListRow = ({ user }: PropsType) => {
       <TableRow key={user.id}>
         <TableCell>
           <div className={s.idCell}>
-            {user.userBan?.reason && <BanIcon className={s.banIcon} />}
+            {isShowBanIcon && <BanIcon className={s.banIcon} />}
             <Typography as={'span'} variant={'regularText14'}>
               {user.id}
             </Typography>
@@ -84,6 +88,16 @@ export const UsersListRow = ({ user }: PropsType) => {
         <BanUserModal
           isOpenBanModal={isOpenBanUserModal}
           setIsOpenBanModal={setIsOpenBanUserModal}
+          userId={user.id}
+          userName={user.userName}
+        />
+      )}
+      {isOpenUnBanUserModal && (
+        <UnBanModal
+          isOpenUnBanModal={isOpenUnBanUserModal}
+          refetch={refetch}
+          setIsOpenUnBanModal={setIsOpenUnBanUserModal}
+          setShowBanIcon={showBanIconHandler}
           userId={user.id}
           userName={user.userName}
         />

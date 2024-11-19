@@ -1,0 +1,14 @@
+.modal {
+  width: 378px;
+  height: auto;
+
+  .buttonsBlock {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      width: 130px;
+    }
+  }
+}

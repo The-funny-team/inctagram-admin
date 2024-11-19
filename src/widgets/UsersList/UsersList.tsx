@@ -21,7 +21,7 @@ export const UsersList = () => {
   const [pageSize, setPageSize] = useState<number>(8)
   const [searchTerm, setSearch] = useState<string>('')
   const debounceValue = useDebounce(searchTerm, 500)
-  const { data, error, loading } = useGetAllUsersQuery({
+  const { data, error, loading, refetch } = useGetAllUsersQuery({
     variables: {
       pageNumber,
       pageSize,
@@ -80,6 +80,7 @@ export const UsersList = () => {
               <UsersListTable
                 direction={sortDirection}
                 onDirectionChange={handleDirectionChange}
+                refetchUsers={refetch}
                 sortBy={sortBy}
                 users={usersList}
               />

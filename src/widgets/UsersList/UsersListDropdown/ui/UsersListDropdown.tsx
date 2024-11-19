@@ -1,4 +1,4 @@
-import { BanIcon, DeleteUserIcon, DotsIcon } from '@/shared/assets'
+import { BanIcon, DeleteUserIcon, DotsIcon, UnBanIcon } from '@/shared/assets'
 import { ROUTES_URL } from '@/shared/const'
 import { useTranslation } from '@/shared/lib/hooks'
 import {
@@ -45,18 +45,21 @@ export const UsersListDropdown = ({
             {t.deleteUser}
           </Typography>
         </DropdownMenuItem>
-        <DropdownMenuItem className={s.menuItem}>
-          <BanIcon />
-          {!isUserBan ? (
-            <Typography as={'span'} onClick={onBanUser} variant={'regularText14'}>
-              {t.banUser}
-            </Typography>
-          ) : (
+        {isUserBan ? (
+          <DropdownMenuItem className={s.menuItem}>
+            <UnBanIcon />
             <Typography as={'span'} onClick={onUnBanUser} variant={'regularText14'}>
               {t.uBanUser}
             </Typography>
-          )}
-        </DropdownMenuItem>
+          </DropdownMenuItem>
+        ) : (
+          <DropdownMenuItem className={s.menuItem}>
+            <BanIcon />
+            <Typography as={'span'} onClick={onBanUser} variant={'regularText14'}>
+              {t.banUser}
+            </Typography>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem className={s.menuItem}>
           <DotsIcon />
           <Typography as={'span'} onClick={onMoreInformation} variant={'regularText14'}>
