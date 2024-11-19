@@ -1,3 +1,6 @@
+import { toast } from 'react-toastify'
+
+import { useUnbanUserMutation } from '@/queries/user/user-unban.generated'
 import { useTranslation } from '@/shared/lib/hooks'
 import { Trans } from '@/shared/ui/Trans'
 import { Button, Modal, Typography } from '@funnyteam/ui-kit'
@@ -7,13 +10,34 @@ import s from './UnBanModal.module.scss'
 type Props = {
   isOpenUnBanModal: boolean
   setIsOpenUnBanModal: (isOpenBanModal: boolean) => void
+  setShowBanIcon: (value: boolean) => void
   userId: number
   userName: string
 }
 
-export const UnBanModal = ({ isOpenUnBanModal, setIsOpenUnBanModal, userId, userName }: Props) => {
+export const UnBanModal = ({
+  isOpenUnBanModal,
+  setIsOpenUnBanModal,
+  setShowBanIcon,
+  userId,
+  userName,
+}: Props) => {
   const { text } = useTranslation()
   const t = text.modal.unBanUserModal
+
+  const [unban, { error, loading }] = useUnbanUserMutation()
+
+  const unBanUserHandler = async () => {
+    try {
+      await unban({
+        variables: { userId },
+      })
+      setIsOpenUnBanModal(false)
+      setShowBanIcon(false)
+    } catch (err) {
+      toast.error(error?.message)
+    }
+  }
 
   return (
     <Modal
@@ -38,7 +62,7 @@ export const UnBanModal = ({ isOpenUnBanModal, setIsOpenUnBanModal, userId, user
         <Button fullWidth={false} onClick={() => setIsOpenUnBanModal(false)}>
           {text.modal.noButton}
         </Button>
-        <Button fullWidth={false} variant={'tertiary'}>
+        <Button fullWidth={false} onClick={unBanUserHandler} variant={'tertiary'}>
           {text.modal.yesButton}
         </Button>
       </div>

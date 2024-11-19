@@ -17,6 +17,10 @@ export const UsersListRow = ({ user }: PropsType) => {
   const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(false)
   const [isOpenBanUserModal, setIsOpenBanUserModal] = useState(false)
   const [isOpenUnBanUserModal, setIsOpenUnBanUserModal] = useState(false)
+  const [isShowBanIcon, setIsShowBanIcon] = useState<boolean>(!!user.userBan?.reason)
+  const showBanIconHandler = (value: boolean) => {
+    setIsShowBanIcon(value)
+  }
   const deleteUserHandler = () => {
     setIsOpenDeleteUserModal(true)
   }
@@ -32,7 +36,7 @@ export const UsersListRow = ({ user }: PropsType) => {
       <TableRow key={user.id}>
         <TableCell>
           <div className={s.idCell}>
-            {user.userBan?.reason && <BanIcon className={s.banIcon} />}
+            {isShowBanIcon && <BanIcon className={s.banIcon} />}
             <Typography as={'span'} variant={'regularText14'}>
               {user.id}
             </Typography>
@@ -91,6 +95,7 @@ export const UsersListRow = ({ user }: PropsType) => {
         <UnBanModal
           isOpenUnBanModal={isOpenUnBanUserModal}
           setIsOpenUnBanModal={setIsOpenUnBanUserModal}
+          setShowBanIcon={showBanIconHandler}
           userId={user.id}
           userName={user.userName}
         />
