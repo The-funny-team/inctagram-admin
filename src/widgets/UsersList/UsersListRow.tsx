@@ -87,7 +87,9 @@ export const UsersListRow = ({ refetch, user }: PropsType) => {
       {isOpenBanUserModal && (
         <BanUserModal
           isOpenBanModal={isOpenBanUserModal}
+          refetch={refetch}
           setIsOpenBanModal={setIsOpenBanUserModal}
+          setShowBanIcon={showBanIconHandler}
           userId={user.id}
           userName={user.userName}
         />

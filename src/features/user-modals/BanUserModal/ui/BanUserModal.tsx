@@ -10,16 +10,25 @@ import s from './BanUserModal.module.scss'
 
 type Props = {
   isOpenBanModal: boolean
+  refetch: () => void
   setIsOpenBanModal: (isOpenBanModal: boolean) => void
+  setShowBanIcon: (value: boolean) => void
   userId: number
   userName: string
 }
 
-export const BanUserModal = ({ isOpenBanModal, setIsOpenBanModal, userId, userName }: Props) => {
+export const BanUserModal = ({
+  isOpenBanModal,
+  refetch,
+  setIsOpenBanModal,
+  setShowBanIcon,
+  userId,
+  userName,
+}: Props) => {
   const { text } = useTranslation()
 
   const [reasonBan, setReasonBan] = useState('reason')
-  const [banUser, { loading }] = useBanUserMutation()
+  const [banUser, { error, loading }] = useBanUserMutation()
 
   const reasonForBan = [
     {
@@ -45,8 +54,10 @@ export const BanUserModal = ({ isOpenBanModal, setIsOpenBanModal, userId, userNa
         },
       })
       setIsOpenBanModal(false)
+      setShowBanIcon(true)
+      refetch()
     } catch (err) {
-      toast.error('error')
+      toast.error(error?.message)
     }
   }
 
