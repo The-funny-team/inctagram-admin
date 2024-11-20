@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
 import { useGetAllPaymentsQuery } from '@/queries/payments/payments.generated'
+import { PAGINATION_OPTIONS } from '@/shared/const'
 import { SortDirection } from '@/types'
-import { Checkbox, Input } from '@funnyteam/ui-kit'
+import { Checkbox, Input, Pagination } from '@funnyteam/ui-kit'
 
 import s from './PaymentsList.module.scss'
 
@@ -28,9 +29,16 @@ export const PaymentsList = () => {
   })
 
   const payments = data?.getPayments.items
+  const paymentsCount = data?.getPayments.totalCount
 
   const handleSearch = (value: string) => {
+    setPageSize(1)
     setSearch(prevState => value)
+  }
+
+  const handlePageSize = (pageSize: string) => {
+    setPageSize(Number(pageSize))
+    setPageNumber(1)
   }
 
   return (
@@ -49,6 +57,16 @@ export const PaymentsList = () => {
           sortBy={sortBy}
         />
       )}
+      <div className={s.pagination}>
+        <Pagination
+          currentPage={pageNumber}
+          onChangePage={setPageNumber}
+          onValueChange={handlePageSize}
+          options={PAGINATION_OPTIONS}
+          pageSize={pageSize}
+          totalCount={paymentsCount}
+        />
+      </div>
     </div>
   )
 }
