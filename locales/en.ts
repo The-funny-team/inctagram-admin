@@ -28,6 +28,15 @@ export const en = {
     yesButton: 'Yes',
   },
   pages: {
+    payments: {
+      tableHead: {
+        amount: 'Amount, $',
+        dateAdded: 'Date added',
+        paymentMethod: 'Payment Method',
+        subscription: 'Subscription',
+        userName: 'Username',
+      },
+    },
     signIn: {
       emailLabel: 'Email',
       passwordLabel: 'Password',

@@ -1,5 +1,6 @@
 import { GetAllPaymentsQuery } from '@/queries/payments/payments.generated'
 import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
+import { useTranslation } from '@/shared/lib/hooks'
 import { SortDirection } from '@/types'
 import { SortPaymentsType } from '@/widgets/PaymentsList/PaymentsList'
 import { PaymentsListRow } from '@/widgets/PaymentsList/PaymentsListTable/PaymentsListRow'
@@ -24,6 +25,8 @@ export const PaymentsListTable = ({
   payments,
   sortBy,
 }: PropsType) => {
+  const { text } = useTranslation()
+  const t = text.pages.payments.tableHead
   const toggleSort = (newSortBy: SortPaymentsType) => {
     const newDirection = direction === SortDirection.Asc ? SortDirection.Desc : SortDirection.Asc
 
@@ -38,7 +41,7 @@ export const PaymentsListTable = ({
             <TableHeadCell>
               <div className={s.sortCell} onClick={() => toggleSort('userName')}>
                 <Typography as={'span'} variant={'boldText14'}>
-                  Username
+                  {t.userName}
                 </Typography>
                 {direction === SortDirection.Asc && sortBy === 'userName' ? (
                   <SortActiveIcon />
@@ -50,7 +53,7 @@ export const PaymentsListTable = ({
             <TableHeadCell>
               <div className={s.sortCell} onClick={() => toggleSort('createdAt')}>
                 <Typography as={'span'} variant={'boldText14'}>
-                  Date added
+                  {t.dateAdded}
                 </Typography>
                 {direction === SortDirection.Asc && sortBy === 'userName' ? (
                   <SortActiveIcon />
@@ -62,7 +65,7 @@ export const PaymentsListTable = ({
             <TableHeadCell>
               <div className={s.sortCell} onClick={() => toggleSort('amount')}>
                 <Typography as={'span'} variant={'boldText14'}>
-                  Amount, $
+                  {t.amount}
                 </Typography>
                 {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
                   <SortActiveIcon />
@@ -72,12 +75,12 @@ export const PaymentsListTable = ({
               </div>
             </TableHeadCell>
             <TableHeadCell>
-              <Typography variant={'boldText14'}>Subscription</Typography>
+              <Typography variant={'boldText14'}>{t.subscription}</Typography>
             </TableHeadCell>
             <TableHeadCell>
               <div className={s.sortCell} onClick={() => toggleSort('paymentMethod')}>
                 <Typography as={'span'} variant={'boldText14'}>
-                  Payment Method
+                  {t.paymentMethod}
                 </Typography>
                 {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
                   <SortActiveIcon />
