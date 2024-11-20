@@ -8,14 +8,15 @@ type PropsType = {
 }
 
 export const PaymentsListRow = ({ payment }: PropsType) => {
+  const paymentAvatar =
+    (payment && payment.avatars && payment.avatars.length !== 0 && payment.avatars[0].url) || ''
+
   return (
     <>
       <TableRow>
         <TableCell>
           <div className={s.userNameCell}>
-            {payment.avatars?.length && (
-              <Avatar size={36} src={payment.avatars[0].url} userName={payment.userName} />
-            )}
+            <Avatar size={36} src={paymentAvatar} userName={payment.userName} />
             <Typography variant={'regularText14'}>{payment.userName}</Typography>
           </div>
         </TableCell>
