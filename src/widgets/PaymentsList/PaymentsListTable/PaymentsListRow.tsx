@@ -1,34 +1,37 @@
+import { SubscriptionPaymentsModel } from '@/types'
 import { Avatar, TableCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from './PaymentsListTable.module.scss'
 
-export const PaymentsListRow = () => {
+type PropsType = {
+  payment: SubscriptionPaymentsModel
+}
+
+export const PaymentsListRow = ({ payment }: PropsType) => {
   return (
     <>
       <TableRow>
         <TableCell>
           <div className={s.userNameCell}>
-            <Avatar
-              size={36}
-              src={
-                'https://funny-inctagram.site/_next/image?url=https%3A%2F%2Fstaging-it-incubator.s3.eu-central-1.amazonaws.com%2Ftrainee-instagram-api%2FImage%2F4164019e-a863-4222-ab5b-e2657e8a8bb2_users%2F848%2Favatar%2Fc309d797-46fe-4711-89a3-0349d083982f-images-192x192&w=640&q=75'
-              }
-              userName={'la'}
-            />
-            <Typography variant={'regularText14'}>userName</Typography>
+            {payment.avatars?.length && (
+              <Avatar size={36} src={payment.avatars[0].url} userName={payment.userName} />
+            )}
+            <Typography variant={'regularText14'}>{payment.userName}</Typography>
           </div>
         </TableCell>
         <TableCell>
-          <Typography variant={'regularText14'}>12.12.2022</Typography>
+          <Typography variant={'regularText14'}>
+            {new Date(payment.createdAt).toLocaleDateString('ru-RU')}
+          </Typography>
         </TableCell>
         <TableCell>
-          <Typography variant={'regularText14'}>50$</Typography>
+          <Typography variant={'regularText14'}>{payment.amount}</Typography>
         </TableCell>
         <TableCell>
-          <Typography variant={'regularText14'}>1 day</Typography>
+          <Typography variant={'regularText14'}>{payment.type}</Typography>
         </TableCell>
         <TableCell>
-          <Typography variant={'regularText14'}>Stripe</Typography>
+          <Typography variant={'regularText14'}>{payment.paymentMethod}</Typography>
         </TableCell>
       </TableRow>
     </>

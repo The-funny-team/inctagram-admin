@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { useGetAllPaymentsQuery } from '@/queries/payments/payments.generated'
 import { SortDirection } from '@/types'
 import { Checkbox, Input } from '@funnyteam/ui-kit'
 
@@ -7,8 +8,26 @@ import s from './PaymentsList.module.scss'
 
 import { PaymentsListTable } from './PaymentsListTable'
 
+export type SortPaymentsType = 'amount' | 'createdAt' | 'paymentMethod' | 'userName'
+
 export const PaymentsList = () => {
+  const [sortBy, setSortBy] = useState<SortPaymentsType>('createdAt')
   const [searchTerm, setSearch] = useState<string>('')
+  const [sortDirection, setSortDirection] = useState<SortDirection>(SortDirection.Desc)
+  const [pageNumber, setPageNumber] = useState<number>(1)
+  const [pageSize, setPageSize] = useState<number>(8)
+
+  const { data, loading, error } = useGetAllPaymentsQuery({
+    variables: {
+      pageNumber,
+      pageSize,
+      searchTerm,
+      sortBy,
+      sortDirection,
+    },
+  })
+
+  const payments = data?.getPayments.items
 
   const handleSearch = (value: string) => {
     setSearch(prevState => value)
@@ -22,11 +41,14 @@ export const PaymentsList = () => {
       <div className={s.searchInput}>
         <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
       </div>
-      <PaymentsListTable
-        direction={SortDirection.Asc}
-        onDirectionChange={() => {}}
-        sortBy={'userName'}
-      />
+      {payments && (
+        <PaymentsListTable
+          direction={SortDirection.Asc}
+          onDirectionChange={() => {}}
+          payments={payments}
+          sortBy={sortBy}
+        />
+      )}
     </div>
   )
 }

@@ -1,11 +1,13 @@
+import { GetAllPaymentsQuery } from '@/queries/payments/payments.generated'
 import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
 import { SortDirection } from '@/types'
+import { SortPaymentsType } from '@/widgets/PaymentsList/PaymentsList'
+import { PaymentsListRow } from '@/widgets/PaymentsList/PaymentsListTable/PaymentsListRow'
 import { Table, TableBody, TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from './PaymentsListTable.module.scss'
-import { PaymentsListRow } from '@/widgets/PaymentsList/PaymentsListTable/PaymentsListRow'
 
-export type SortPaymentsType = 'amount' | 'createdAt' | 'paymentMethod' | 'userName'
+type PaymentsType = GetAllPaymentsQuery['getPayments']['items']
 
 type PropsType = {
   direction: SortDirection
@@ -13,9 +15,15 @@ type PropsType = {
     newDirection: SortDirection
     newSortBy: SortPaymentsType
   }) => void
+  payments: PaymentsType
   sortBy: SortPaymentsType
 }
-export const PaymentsListTable = ({ direction, onDirectionChange, sortBy }: PropsType) => {
+export const PaymentsListTable = ({
+  direction,
+  onDirectionChange,
+  payments,
+  sortBy,
+}: PropsType) => {
   const toggleSort = (newSortBy: SortPaymentsType) => {
     const newDirection = direction === SortDirection.Asc ? SortDirection.Desc : SortDirection.Asc
 
@@ -81,7 +89,9 @@ export const PaymentsListTable = ({ direction, onDirectionChange, sortBy }: Prop
           </TableRow>
         </TableHead>
         <TableBody>
-          <PaymentsListRow></PaymentsListRow>
+          {payments.map(p => (
+            <PaymentsListRow key={p.id} payment={p} />
+          ))}
         </TableBody>
       </Table>
     </div>
