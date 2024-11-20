@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { useGetAllPaymentsQuery } from '@/queries/payments/payments.generated'
 import { PAGINATION_OPTIONS } from '@/shared/const'
+import { useDebounce } from '@/shared/lib/hooks'
 import { Loader } from '@/shared/ui/Loader'
 import { SortDirection } from '@/types'
 import { Checkbox, Input, Pagination } from '@funnyteam/ui-kit'
@@ -18,12 +19,13 @@ export const PaymentsList = () => {
   const [sortDirection, setSortDirection] = useState<SortDirection>(SortDirection.Desc)
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(8)
+  const debounceValue = useDebounce(searchTerm, 500)
 
   const { data, loading } = useGetAllPaymentsQuery({
     variables: {
       pageNumber,
       pageSize,
-      searchTerm,
+      searchTerm: debounceValue || '',
       sortBy,
       sortDirection,
     },
