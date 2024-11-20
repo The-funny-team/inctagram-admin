@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { useGetAllPaymentsQuery } from '@/queries/payments/payments.generated'
 import { PAGINATION_OPTIONS } from '@/shared/const'
+import { Loader } from '@/shared/ui/Loader'
 import { SortDirection } from '@/types'
 import { Checkbox, Input, Pagination } from '@funnyteam/ui-kit'
 
@@ -18,7 +19,7 @@ export const PaymentsList = () => {
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(8)
 
-  const { data, loading, error } = useGetAllPaymentsQuery({
+  const { data, loading } = useGetAllPaymentsQuery({
     variables: {
       pageNumber,
       pageSize,
@@ -41,6 +42,15 @@ export const PaymentsList = () => {
     setPageNumber(1)
   }
 
+  const handleDirectionChange = (sortParams: {
+    newDirection: SortDirection
+    newSortBy: SortPaymentsType
+  }) => {
+    setPageNumber(1)
+    setSortBy(sortParams.newSortBy)
+    setSortDirection(sortParams.newDirection)
+  }
+
   return (
     <div className={s.paymentsWrapper}>
       <div className={s.checkBox}>
@@ -49,10 +59,11 @@ export const PaymentsList = () => {
       <div className={s.searchInput}>
         <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
       </div>
+      {loading && <Loader />}
       {payments && (
         <PaymentsListTable
-          direction={SortDirection.Asc}
-          onDirectionChange={() => {}}
+          direction={sortDirection}
+          onDirectionChange={handleDirectionChange}
           payments={payments}
           sortBy={sortBy}
         />

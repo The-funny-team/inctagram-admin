@@ -55,7 +55,7 @@ export const PaymentsListTable = ({
                 <Typography as={'span'} variant={'boldText14'}>
                   {t.dateAdded}
                 </Typography>
-                {direction === SortDirection.Asc && sortBy === 'userName' ? (
+                {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
                   <SortActiveIcon />
                 ) : (
                   <SortDefaultIcon />
@@ -67,7 +67,7 @@ export const PaymentsListTable = ({
                 <Typography as={'span'} variant={'boldText14'}>
                   {t.amount}
                 </Typography>
-                {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
+                {direction === SortDirection.Asc && sortBy === 'amount' ? (
                   <SortActiveIcon />
                 ) : (
                   <SortDefaultIcon />
@@ -82,7 +82,7 @@ export const PaymentsListTable = ({
                 <Typography as={'span'} variant={'boldText14'}>
                   {t.paymentMethod}
                 </Typography>
-                {direction === SortDirection.Asc && sortBy === 'createdAt' ? (
+                {direction === SortDirection.Asc && sortBy === 'paymentMethod' ? (
                   <SortActiveIcon />
                 ) : (
                   <SortDefaultIcon />
