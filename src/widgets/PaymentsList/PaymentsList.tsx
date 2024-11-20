@@ -33,7 +33,7 @@ export const PaymentsList = () => {
   const paymentsCount = data?.getPayments.totalCount
 
   const handleSearch = (value: string) => {
-    setPageSize(1)
+    setPageNumber(1)
     setSearch(prevState => value)
   }
 
