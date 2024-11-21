@@ -1,0 +1,1 @@
+export { PaymentsListTable } from './PaymentsListTable'

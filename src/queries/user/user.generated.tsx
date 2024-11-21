@@ -144,7 +144,13 @@ export const GetUserInfoDocument = gql`
  * });
  */
 export function useGetUserInfoQuery(
-  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetUserInfoQueryVariables }) &
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetUserInfoQueryVariables
+      }
+    | { skip: boolean }
+  ) &
     Apollo.QueryHookOptions<GetUserInfoQuery, GetUserInfoQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -212,8 +218,11 @@ export const GetUploadedPhotosDocument = gql`
  */
 export function useGetUploadedPhotosQuery(
   baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetUploadedPhotosQueryVariables
+      }
     | { skip: boolean }
-    | { skip?: boolean; variables: GetUploadedPhotosQueryVariables }
   ) &
     Apollo.QueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
 ) {
@@ -308,7 +317,13 @@ export const GetPaymentsDocument = gql`
  * });
  */
 export function useGetPaymentsQuery(
-  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetPaymentsQueryVariables }) &
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetPaymentsQueryVariables
+      }
+    | { skip: boolean }
+  ) &
     Apollo.QueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -392,7 +407,13 @@ export const GetFollowersDocument = gql`
  * });
  */
 export function useGetFollowersQuery(
-  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetFollowersQueryVariables }) &
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetFollowersQueryVariables
+      }
+    | { skip: boolean }
+  ) &
     Apollo.QueryHookOptions<GetFollowersQuery, GetFollowersQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -482,7 +503,13 @@ export const GetFollowingDocument = gql`
  * });
  */
 export function useGetFollowingQuery(
-  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetFollowingQueryVariables }) &
+  baseOptions: (
+    | {
+        skip?: boolean
+        variables: GetFollowingQueryVariables
+      }
+    | { skip: boolean }
+  ) &
     Apollo.QueryHookOptions<GetFollowingQuery, GetFollowingQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }

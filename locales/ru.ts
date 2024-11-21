@@ -31,6 +31,15 @@ export const ru: LocaleType = {
     yesButton: 'Да',
   },
   pages: {
+    payments: {
+      tableHead: {
+        amount: 'Сумма, $',
+        dateAdded: 'Дата добавления',
+        paymentMethod: 'Способ оплаты',
+        subscription: 'Подписка',
+        userName: 'Имя пользователя',
+      },
+    },
     signIn: {
       emailLabel: 'Электронная почта',
       passwordLabel: 'Пароль',
