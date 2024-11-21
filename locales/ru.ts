@@ -35,9 +35,9 @@ export const ru: LocaleType = {
       tableHead: {
         amount: 'Сумма, $',
         dateAdded: 'Дата добавления',
-        paymentMethod: 'Способ Оплаты',
+        paymentMethod: 'Способ оплаты',
         subscription: 'Подписка',
-        userName: 'Имя Пользователя',
+        userName: 'Имя пользователя',
       },
     },
     signIn: {
