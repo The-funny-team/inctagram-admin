@@ -2,7 +2,6 @@ import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
 import * as Types from '../../types'
-
 const defaultOptions = {} as const
 
 export type GetAllPaymentsQueryVariables = Types.Exact<{
@@ -107,7 +106,6 @@ export function useGetAllPaymentsQuery(
     options
   )
 }
-
 export function useGetAllPaymentsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetAllPaymentsQuery, GetAllPaymentsQueryVariables>
 ) {
@@ -118,7 +116,6 @@ export function useGetAllPaymentsLazyQuery(
     options
   )
 }
-
 export function useGetAllPaymentsSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -132,7 +129,6 @@ export function useGetAllPaymentsSuspenseQuery(
     options
   )
 }
-
 export type GetAllPaymentsQueryHookResult = ReturnType<typeof useGetAllPaymentsQuery>
 export type GetAllPaymentsLazyQueryHookResult = ReturnType<typeof useGetAllPaymentsLazyQuery>
 export type GetAllPaymentsSuspenseQueryHookResult = ReturnType<

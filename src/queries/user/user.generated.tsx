@@ -2,7 +2,6 @@ import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
 import * as Types from '../../types'
-
 const defaultOptions = {} as const
 
 export type GetUserInfoQueryVariables = Types.Exact<{
@@ -144,20 +143,13 @@ export const GetUserInfoDocument = gql`
  * });
  */
 export function useGetUserInfoQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetUserInfoQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetUserInfoQueryVariables }) &
     Apollo.QueryHookOptions<GetUserInfoQuery, GetUserInfoQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
 
   return Apollo.useQuery<GetUserInfoQuery, GetUserInfoQueryVariables>(GetUserInfoDocument, options)
 }
-
 export function useGetUserInfoLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetUserInfoQuery, GetUserInfoQueryVariables>
 ) {
@@ -168,7 +160,6 @@ export function useGetUserInfoLazyQuery(
     options
   )
 }
-
 export function useGetUserInfoSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -182,7 +173,6 @@ export function useGetUserInfoSuspenseQuery(
     options
   )
 }
-
 export type GetUserInfoQueryHookResult = ReturnType<typeof useGetUserInfoQuery>
 export type GetUserInfoLazyQueryHookResult = ReturnType<typeof useGetUserInfoLazyQuery>
 export type GetUserInfoSuspenseQueryHookResult = ReturnType<typeof useGetUserInfoSuspenseQuery>
@@ -218,11 +208,8 @@ export const GetUploadedPhotosDocument = gql`
  */
 export function useGetUploadedPhotosQuery(
   baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetUploadedPhotosQueryVariables
-      }
     | { skip: boolean }
+    | { skip?: boolean; variables: GetUploadedPhotosQueryVariables }
   ) &
     Apollo.QueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
 ) {
@@ -233,7 +220,6 @@ export function useGetUploadedPhotosQuery(
     options
   )
 }
-
 export function useGetUploadedPhotosLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetUploadedPhotosQuery, GetUploadedPhotosQueryVariables>
 ) {
@@ -244,7 +230,6 @@ export function useGetUploadedPhotosLazyQuery(
     options
   )
 }
-
 export function useGetUploadedPhotosSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -258,7 +243,6 @@ export function useGetUploadedPhotosSuspenseQuery(
     options
   )
 }
-
 export type GetUploadedPhotosQueryHookResult = ReturnType<typeof useGetUploadedPhotosQuery>
 export type GetUploadedPhotosLazyQueryHookResult = ReturnType<typeof useGetUploadedPhotosLazyQuery>
 export type GetUploadedPhotosSuspenseQueryHookResult = ReturnType<
@@ -317,20 +301,13 @@ export const GetPaymentsDocument = gql`
  * });
  */
 export function useGetPaymentsQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetPaymentsQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetPaymentsQueryVariables }) &
     Apollo.QueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
 
   return Apollo.useQuery<GetPaymentsQuery, GetPaymentsQueryVariables>(GetPaymentsDocument, options)
 }
-
 export function useGetPaymentsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetPaymentsQuery, GetPaymentsQueryVariables>
 ) {
@@ -341,7 +318,6 @@ export function useGetPaymentsLazyQuery(
     options
   )
 }
-
 export function useGetPaymentsSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -355,7 +331,6 @@ export function useGetPaymentsSuspenseQuery(
     options
   )
 }
-
 export type GetPaymentsQueryHookResult = ReturnType<typeof useGetPaymentsQuery>
 export type GetPaymentsLazyQueryHookResult = ReturnType<typeof useGetPaymentsLazyQuery>
 export type GetPaymentsSuspenseQueryHookResult = ReturnType<typeof useGetPaymentsSuspenseQuery>
@@ -407,13 +382,7 @@ export const GetFollowersDocument = gql`
  * });
  */
 export function useGetFollowersQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetFollowersQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetFollowersQueryVariables }) &
     Apollo.QueryHookOptions<GetFollowersQuery, GetFollowersQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -423,7 +392,6 @@ export function useGetFollowersQuery(
     options
   )
 }
-
 export function useGetFollowersLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetFollowersQuery, GetFollowersQueryVariables>
 ) {
@@ -434,7 +402,6 @@ export function useGetFollowersLazyQuery(
     options
   )
 }
-
 export function useGetFollowersSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -448,7 +415,6 @@ export function useGetFollowersSuspenseQuery(
     options
   )
 }
-
 export type GetFollowersQueryHookResult = ReturnType<typeof useGetFollowersQuery>
 export type GetFollowersLazyQueryHookResult = ReturnType<typeof useGetFollowersLazyQuery>
 export type GetFollowersSuspenseQueryHookResult = ReturnType<typeof useGetFollowersSuspenseQuery>
@@ -503,13 +469,7 @@ export const GetFollowingDocument = gql`
  * });
  */
 export function useGetFollowingQuery(
-  baseOptions: (
-    | {
-        skip?: boolean
-        variables: GetFollowingQueryVariables
-      }
-    | { skip: boolean }
-  ) &
+  baseOptions: ({ skip: boolean } | { skip?: boolean; variables: GetFollowingQueryVariables }) &
     Apollo.QueryHookOptions<GetFollowingQuery, GetFollowingQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
@@ -519,7 +479,6 @@ export function useGetFollowingQuery(
     options
   )
 }
-
 export function useGetFollowingLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetFollowingQuery, GetFollowingQueryVariables>
 ) {
@@ -530,7 +489,6 @@ export function useGetFollowingLazyQuery(
     options
   )
 }
-
 export function useGetFollowingSuspenseQuery(
   baseOptions?:
     | Apollo.SkipToken
@@ -544,7 +502,6 @@ export function useGetFollowingSuspenseQuery(
     options
   )
 }
-
 export type GetFollowingQueryHookResult = ReturnType<typeof useGetFollowingQuery>
 export type GetFollowingLazyQueryHookResult = ReturnType<typeof useGetFollowingLazyQuery>
 export type GetFollowingSuspenseQueryHookResult = ReturnType<typeof useGetFollowingSuspenseQuery>
@@ -589,7 +546,6 @@ export function useRemoveUserMutation(
     options
   )
 }
-
 export type RemoveUserMutationHookResult = ReturnType<typeof useRemoveUserMutation>
 export type RemoveUserMutationResult = Apollo.MutationResult<RemoveUserMutation>
 export type RemoveUserMutationOptions = Apollo.BaseMutationOptions<
