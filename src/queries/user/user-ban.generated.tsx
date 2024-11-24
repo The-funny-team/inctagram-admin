@@ -2,7 +2,6 @@ import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
 
 import * as Types from '../../types'
-
 const defaultOptions = {} as const
 
 export type BanUserMutationVariables = Types.Exact<{
@@ -44,7 +43,6 @@ export function useBanUserMutation(
 
   return Apollo.useMutation<BanUserMutation, BanUserMutationVariables>(BanUserDocument, options)
 }
-
 export type BanUserMutationHookResult = ReturnType<typeof useBanUserMutation>
 export type BanUserMutationResult = Apollo.MutationResult<BanUserMutation>
 export type BanUserMutationOptions = Apollo.BaseMutationOptions<
