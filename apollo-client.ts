@@ -1,21 +1,17 @@
 import { loadFromLocalStorage } from '@/shared/lib/helpers'
-import { ApolloClient, InMemoryCache, createHttpLink, split } from '@apollo/client'
+import { ApolloClient, createHttpLink, InMemoryCache, split } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { getMainDefinition } from '@apollo/client/utilities'
 // @ts-ignore
 // eslint-disable-next-line import/no-unresolved
-import { createClient } from 'graphql-ws'
+import { WebSocketLink } from '@apollo/client/link/ws'
+import { SubscriptionClient } from 'subscriptions-transport-ws'
 
 const httpLink = createHttpLink({
   uri: 'https://inctagram.work/api/v1/graphql',
 })
 
-const wsLink = new GraphQLWsLink(
-  createClient({
-    url: 'wss://inctagram.work/api/v1/graphql',
-  })
-)
+const wsLink = new WebSocketLink(new SubscriptionClient('wss://inctagram.work/api/v1/graphql'))
 
 const getCredentials = () => {
   const username = loadFromLocalStorage('username', '')
@@ -43,7 +39,7 @@ const splitLink = split(
 
     return definition.kind === 'OperationDefinition' && definition.operation === 'subscription'
   },
-  wsLink,
+  authLink.concat(wsLink),
   authLink.concat(httpLink)
 )
 
