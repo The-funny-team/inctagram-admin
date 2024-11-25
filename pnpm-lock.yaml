@@ -53,6 +53,9 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  date-fns:
+    specifier: ^3.3.0
+    version: 3.6.0
   graphql:
     specifier: ^16.9.0
     version: 16.9.0
