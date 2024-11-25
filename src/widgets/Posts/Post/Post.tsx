@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { UnBanModal } from '@/features/user-modals'
+import { GetAllPostsQuery } from '@/queries/posts/posts.generated'
 import { BanIcon } from '@/shared/assets'
 import { PostDescription } from '@/shared/ui/PostDescription'
 import { Post } from '@/types'
@@ -22,7 +23,7 @@ const DESCRIPTION_SIZES = {
 }
 
 type PropsType = {
-  post: Post
+  post: GetAllPostsQuery['getPosts']['items'][number]
   refetch: () => void
 }
 export const PostItem = ({ post, refetch }: PropsType) => {
