@@ -37,6 +37,12 @@ export const en = {
         userName: 'Username',
       },
     },
+    posts: {
+      postDescription: {
+        fullText: 'Show more',
+        shortText: 'Hide',
+      },
+    },
     signIn: {
       emailLabel: 'Email',
       passwordLabel: 'Password',
