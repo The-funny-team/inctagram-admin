@@ -4,13 +4,12 @@ import { useGetAllUsersQuery } from '@/queries/users/users.generated'
 import { PAGINATION_OPTIONS } from '@/shared/const'
 import { useDebounce, useTranslation } from '@/shared/lib/hooks'
 import { Loader } from '@/shared/ui/Loader'
-import { SortDirection, User, UserBlockStatus } from '@/types'
+import { SortDirection, UserBlockStatus } from '@/types'
 import { Input, Pagination, Select } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
 
 import { UsersListTable } from './UsersListTable'
-
 export type SortByType = 'createdAt' | 'userName'
 
 export const UsersList = () => {
@@ -31,7 +30,8 @@ export const UsersList = () => {
       statusFilter: usersStatus,
     },
   })
-  const usersList = data?.getUsers.users as Omit<User, 'email' | 'profile'>[]
+
+  const usersList = data?.getUsers.users
   const usersCount = data?.getUsers.pagination.totalCount
   const { text } = useTranslation()
   const t = text.pages.usersList.select

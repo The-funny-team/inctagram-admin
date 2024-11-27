@@ -1,6 +1,7 @@
+import { GetAllUsersQuery } from '@/queries/users/users.generated'
 import { SortActiveIcon, SortDefaultIcon } from '@/shared/assets'
 import { useTranslation } from '@/shared/lib/hooks'
-import { SortDirection, User } from '@/types'
+import { SortDirection } from '@/types'
 import { UsersListRow } from '@/widgets/UsersList/UsersListRow'
 import { Table, TableBody, TableHead, TableHeadCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
@@ -8,12 +9,13 @@ import s from './UsersList.module.scss'
 
 import { SortByType } from './UsersList'
 
+export type UserType = GetAllUsersQuery['getUsers']['users'][number]
 type PropsType = {
   direction: SortDirection
   onDirectionChange: (sortParams: { newDirection: SortDirection; newSortBy: SortByType }) => void
   refetchUsers: () => void
   sortBy: SortByType
-  users: Omit<User, 'email' | 'profile'>[]
+  users: UserType[]
 }
 
 export const UsersListTable = ({
