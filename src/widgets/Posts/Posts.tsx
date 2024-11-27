@@ -18,7 +18,7 @@ export const Posts = () => {
 
   const {
     data: posts,
-    loading,
+
     refetch,
   } = useGetAllPostsQuery({
     variables: { endCursorPostId, searchTerm: debouncedValue },

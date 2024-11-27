@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { UnBanModal } from '@/features/user-modals'
+import { BanUserModal } from '@/features/user-modals'
 import { GetAllPostsQuery } from '@/queries/posts/posts.generated'
 import { BanIcon } from '@/shared/assets'
 import { PostDescription } from '@/shared/ui/PostDescription'
@@ -16,7 +16,7 @@ import s from './Post.module.scss'
 import { SliderPost } from '../SliderPost'
 
 const DESCRIPTION_SIZES = {
-  length: 80,
+  length: 60,
   maxHeight: 240,
   minHeight: 72,
 }
@@ -87,18 +87,23 @@ export const PostItem = ({ post, refetch }: PropsType) => {
         )}
       </div>
       <div className={clsx(s.postInfo, { [s.expanded]: isExpanded })} style={{ top: topStyle }}>
-        <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            gap: '15px',
+            justifyContent: 'space-between',
+          }}
+        >
           <div style={{ alignItems: 'center', display: 'flex', gap: '13px' }}>
             <Avatar size={36} src={postOwnerAvatar} userName={post.postOwner.userName} />
             <Typography as={'h3'} className={s.userName} variant={'h3'}>
               {post.postOwner.userName}
             </Typography>
           </div>
-          {post.userBan?.reason && (
-            <div onClick={() => setIsOpenModalBan(true)} style={{ cursor: 'pointer' }}>
-              <BanIcon />
-            </div>
-          )}
+          <div onClick={() => setIsOpenModalBan(true)} style={{ cursor: 'pointer' }}>
+            <BanIcon />
+          </div>
         </div>
         <Typography as={'p'} className={s.date}>
           {timeAgo}
@@ -113,10 +118,11 @@ export const PostItem = ({ post, refetch }: PropsType) => {
           </PostDescription>
         </div>
       </div>
-      <UnBanModal
-        isOpenUnBanModal={isOpenModalBan}
+
+      <BanUserModal
+        isOpenBanModal={isOpenModalBan}
         refetch={refetch}
-        setIsOpenUnBanModal={() => setIsOpenModalBan(false)}
+        setIsOpenBanModal={setIsOpenModalBan}
         setShowBanIcon={() => {}}
         userId={post.postOwner.id}
         userName={post.postOwner.userName}
