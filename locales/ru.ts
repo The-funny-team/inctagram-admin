@@ -40,6 +40,12 @@ export const ru: LocaleType = {
         userName: 'Имя пользователя',
       },
     },
+    posts: {
+      postDescription: {
+        fullText: 'Показать',
+        shortText: 'Скрыть',
+      },
+    },
     signIn: {
       emailLabel: 'Электронная почта',
       passwordLabel: 'Пароль',
