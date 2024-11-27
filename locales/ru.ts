@@ -41,6 +41,7 @@ export const ru: LocaleType = {
       },
     },
     posts: {
+      noResults: 'Ничего не найдено по вашему запросу.',
       postDescription: {
         fullText: 'Показать',
         shortText: 'Скрыть',

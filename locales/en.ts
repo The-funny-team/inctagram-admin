@@ -38,6 +38,7 @@ export const en = {
       },
     },
     posts: {
+      noResults: 'No results found for your search.',
       postDescription: {
         fullText: 'Show more',
         shortText: 'Hide',
