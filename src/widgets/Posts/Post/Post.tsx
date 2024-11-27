@@ -4,7 +4,6 @@ import { UnBanModal } from '@/features/user-modals'
 import { GetAllPostsQuery } from '@/queries/posts/posts.generated'
 import { BanIcon } from '@/shared/assets'
 import { PostDescription } from '@/shared/ui/PostDescription'
-import { Post } from '@/types'
 import { Avatar, Typography } from '@funnyteam/ui-kit'
 import clsx from 'clsx'
 import { formatDistanceToNowStrict, parseISO } from 'date-fns'
@@ -22,8 +21,9 @@ const DESCRIPTION_SIZES = {
   minHeight: 72,
 }
 
+export type PostType = GetAllPostsQuery['getPosts']['items'][number]
 type PropsType = {
-  post: GetAllPostsQuery['getPosts']['items'][number]
+  post: PostType
   refetch: () => void
 }
 export const PostItem = ({ post, refetch }: PropsType) => {
@@ -78,6 +78,7 @@ export const PostItem = ({ post, refetch }: PropsType) => {
                 alt={'post image'}
                 height={240}
                 key={i.url}
+                priority
                 src={i.url as string}
                 width={234}
               />

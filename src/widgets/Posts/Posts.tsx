@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { useGetAllPostsQuery } from '@/queries/posts/posts.generated'
+import { useGetAllPostsQuery, usePostAddedSubscription } from '@/queries/posts/posts.generated'
 import { useDebounce } from '@/shared/lib/hooks'
-import { PostItem } from '@/widgets/Posts/Post/Post'
+import { PostItem, PostType } from '@/widgets/Posts/Post/Post'
 import { Input } from '@funnyteam/ui-kit'
 
 import s from './Posts.module.scss'
 
 export const Posts = () => {
+  const [allPosts, setAllPosts] = useState<PostType[]>([])
   const [searchTerm, setSearchTerm] = useState<string>('')
   const [endCursorPostId, setEndCursorPostId] = useState(0)
 
@@ -15,17 +16,29 @@ export const Posts = () => {
   const { data: posts, refetch } = useGetAllPostsQuery({
     variables: { endCursorPostId, searchTerm: debouncedValue },
   })
+  const { data: newPostAdded } = usePostAddedSubscription()
+
   const handleSearch = (value: string) => {
     setSearchTerm(prevState => value)
   }
 
-  const allPosts = posts?.getPosts.items
+  useEffect(() => {
+    if (posts && posts?.getPosts.items.length) {
+      setAllPosts(prevState => [...prevState, ...posts.getPosts.items])
+    }
+  }, [posts])
+
+  useEffect(() => {
+    if (newPostAdded && newPostAdded.postAdded) {
+      setAllPosts(prevState => [newPostAdded.postAdded, ...prevState])
+    }
+  }, [newPostAdded])
 
   return (
     <div className={s.wrapper}>
-      <Input onValueChange={setSearchTerm} type={'search'} value={searchTerm} />
+      <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
       <div className={s.posts}>
-        {allPosts?.map(p => <PostItem key={p.id} post={p} refetch={refetch} />)}
+        {allPosts?.map(p => <PostItem key={p.createdAt} post={p} refetch={refetch} />)}
       </div>
     </div>
   )
