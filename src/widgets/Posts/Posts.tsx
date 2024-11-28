@@ -35,7 +35,7 @@ export const Posts = () => {
     if (posts && posts?.getPosts.items.length) {
       setAllPosts([...allPosts, ...posts.getPosts.items])
     }
-  }, [posts])
+  }, [posts, allPosts])
 
   useEffect(() => {
     if (newPostAdded && newPostAdded.postAdded) {
