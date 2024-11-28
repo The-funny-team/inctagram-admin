@@ -1,5 +1,5 @@
 import { loadFromLocalStorage } from '@/shared/lib/helpers'
-import { ApolloClient, createHttpLink, InMemoryCache, split } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink, split } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { getMainDefinition } from '@apollo/client/utilities'
 // @ts-ignore
