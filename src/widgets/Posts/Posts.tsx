@@ -65,7 +65,12 @@ export const Posts = () => {
 
   return (
     <div className={s.wrapper}>
-      <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
+      <Input
+        onValueChange={handleSearch}
+        placeholder={'Search'}
+        type={'search'}
+        value={searchTerm}
+      />
       <div className={s.posts}>
         {allPosts.length !== 0 ? (
           allPosts.map(p => <PostItem key={p.id} post={p} refetch={refetch} />)

@@ -59,7 +59,12 @@ export const PaymentsList = () => {
         <Checkbox checked label={'Autoupdate'} />
       </div>
       <div className={s.searchInput}>
-        <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
+        <Input
+          onValueChange={handleSearch}
+          placeholder={'Search'}
+          type={'search'}
+          value={searchTerm}
+        />
       </div>
       {loading && <Loader />}
       {payments && (

@@ -70,7 +70,12 @@ export const UsersList = () => {
         <div className={s.wrapper}>
           <div className={s.filters}>
             <div className={s.filtersInput}>
-              <Input onValueChange={handleSearch} type={'search'} value={searchTerm} />
+              <Input
+                onValueChange={handleSearch}
+                placeholder={'Search'}
+                type={'search'}
+                value={searchTerm}
+              />
             </div>
             <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
           </div>
