@@ -3,15 +3,15 @@ import { useState } from 'react'
 import { BanUserModal, DeleteUserModal, UnBanModal } from '@/features/user-modals'
 import { BanIcon } from '@/shared/assets'
 import { LINK_TO_PROFILE_PUBLIC_PAGE } from '@/shared/const'
-import { User } from '@/types'
 import { UsersListDropdown } from '@/widgets/UsersList/UsersListDropdown'
+import { UserType } from '@/widgets/UsersList/UsersListTable'
 import { TableCell, TableRow, Typography } from '@funnyteam/ui-kit'
 
 import s from './UsersList.module.scss'
 
 type PropsType = {
   refetch: () => void
-  user: Omit<User, 'email' | 'profile'>
+  user: UserType
 }
 
 export const UsersListRow = ({ refetch, user }: PropsType) => {
