@@ -12,8 +12,9 @@ export const en = {
       advertisingPlacement: 'Advertising placement',
       anotherReason: 'Another reason',
       badBehavior: 'Bad behavior',
+      enteredReason: 'Enter the reason...',
       getQuestion: `Are you sure you want to ban this user, <1></1>`,
-      reasonForBan: 'Reason for ban',
+      reasonForBan: 'Reason for ban*',
       title: 'Ban user',
     },
     deleteUserModal: {

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { useBanUserMutation } from '@/queries/user/user-ban.generated'
 import { useTranslation } from '@/shared/lib/hooks'
 import { Trans } from '@/shared/ui/Trans'
-import { Button, Modal, Select, Typography } from '@funnyteam/ui-kit'
+import { Button, Input, Modal, Select, Typography } from '@funnyteam/ui-kit'
 
 import s from './BanUserModal.module.scss'
 
@@ -27,7 +27,8 @@ export const BanUserModal = ({
 }: Props) => {
   const { text } = useTranslation()
 
-  const [reasonBan, setReasonBan] = useState('reason')
+  const [reasonBan, setReasonBan] = useState('')
+  const [anotherReason, setAnotherReason] = useState('')
   const [banUser, { error, loading }] = useBanUserMutation()
 
   const reasonForBan = [
@@ -49,7 +50,7 @@ export const BanUserModal = ({
     try {
       await banUser({
         variables: {
-          banReason: reasonBan,
+          banReason: reasonBan !== 'Another reason' ? reasonBan : anotherReason,
           userId: userId,
         },
       })
@@ -82,13 +83,32 @@ export const BanUserModal = ({
       </Typography>
       <Select
         className={s.selectReason}
-        onValueChange={setReasonBan}
+        onValueChange={value => {
+          setReasonBan(value)
+          if (value !== 'Another reason') {
+            setAnotherReason('')
+          }
+        }}
         options={reasonForBan}
         placeholder={text.modal.banUserModal.reasonForBan}
         value={reasonBan}
       />
+      {reasonBan === 'Another reason' && (
+        <Input
+          className={s.inputReason}
+          onValueChange={value => setAnotherReason(value)}
+          placeholder={text.modal.banUserModal.enteredReason}
+          type={'text'}
+          value={anotherReason}
+        />
+      )}
       <div className={s.buttonsBlock}>
-        <Button disabled={loading} fullWidth={false} onClick={banUserHandler} variant={'tertiary'}>
+        <Button
+          disabled={loading || !reasonBan || (reasonBan === 'Another reason' && !anotherReason)}
+          fullWidth={false}
+          onClick={banUserHandler}
+          variant={'tertiary'}
+        >
           {text.modal.yesButton}
         </Button>
         <Button
