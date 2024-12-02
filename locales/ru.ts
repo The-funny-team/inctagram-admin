@@ -14,8 +14,9 @@ export const ru: LocaleType = {
       advertisingPlacement: 'Размещение рекламы',
       anotherReason: 'Другая причина',
       badBehavior: 'Плохое поведение',
+      enteredReason: 'Введите причину...',
       getQuestion: `Вы уверены, что хотите заблокировать пользователя <1></1>`,
-      reasonForBan: 'Причина блокировки',
+      reasonForBan: 'Причина блокировки*',
       title: 'Заблокировать пользователя',
     },
     deleteUserModal: {
