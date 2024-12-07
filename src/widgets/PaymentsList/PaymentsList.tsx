@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import { useGetAllPaymentsQuery } from '@/queries/payments/payments.generated'
-import { PAGINATION_OPTIONS } from '@/shared/const'
 import { PAGINATION_PAYMENTS_OPTIONS } from '@/shared/const/pagination'
 import { useDebounce } from '@/shared/lib/hooks'
 import { Loader } from '@/shared/ui/Loader'
