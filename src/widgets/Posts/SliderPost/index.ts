@@ -1,0 +1,1 @@
+export { SliderPost } from './SliderPost'

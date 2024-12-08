@@ -1,0 +1,21 @@
+.tableWrapper {
+  padding-top: 24px;
+
+  th,
+  td {
+    padding: 12px 24px;
+  }
+
+  .sortCell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .userNameCell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}

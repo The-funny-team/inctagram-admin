@@ -1,0 +1,27 @@
+.rootBanModal {
+  width: 378px;
+  height: auto;
+
+  .inputReason {
+    margin-bottom: 24px;
+  }
+
+  .selectReason {
+    margin: 18px 0 24px;
+    background-color: inherit;
+
+    &[data-state='open'] {
+      background-color: var(--color-dark-500);
+    }
+  }
+
+  .buttonsBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+
+    button {
+      width: 130px;
+    }
+  }
+}

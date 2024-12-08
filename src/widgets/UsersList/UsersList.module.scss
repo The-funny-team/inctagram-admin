@@ -1,0 +1,53 @@
+.wrapper {
+  padding: 60px 0 0 24px;
+}
+
+.filters {
+  align-items: center;
+  display: flex;
+  gap: 95px;
+  justify-content: space-between;
+}
+
+.filtersInput {
+  max-width: 620px;
+  width: 100%;
+}
+
+.tableWrapper {
+  padding-top: 36px;
+
+  th,
+  td {
+    padding: 12px 24px;
+  }
+}
+
+.sortCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.idCell {
+  padding-left: 36px;
+  position: relative;
+}
+
+.linkCell {
+  text-decoration: none;
+}
+
+.dropDownCell {
+  text-align: end;
+}
+
+.banIcon {
+  position: absolute;
+  left: 0;
+}
+
+.pagination {
+  padding-top: 36px;
+}

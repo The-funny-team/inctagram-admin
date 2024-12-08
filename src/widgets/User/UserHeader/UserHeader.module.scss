@@ -1,0 +1,53 @@
+.root {
+  margin-top: 24px;
+  margin-bottom: 29px;
+
+  .avatar {
+  }
+
+  .link {
+    cursor: pointer;
+
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    margin-bottom: 24px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+
+    .namePart {
+      display: flex;
+      gap: 24px;
+
+      div {
+        a:last-child {
+          line-height: var(--line-height-s);
+          color: var(--color-light-900);
+        }
+      }
+    }
+
+    .dataPart {
+      display: flex;
+      gap: 12px;
+
+      div {
+        width: 172px;
+        height: 48px;
+      }
+
+      p:first-child {
+        color: var(--color-light-900);
+      }
+    }
+  }
+}

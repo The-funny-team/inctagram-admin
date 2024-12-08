@@ -1,0 +1,108 @@
+import { useState } from 'react'
+
+import { useGetAllUsersQuery } from '@/queries/users/users.generated'
+import { PAGINATION_OPTIONS } from '@/shared/const'
+import { useDebounce, useTranslation } from '@/shared/lib/hooks'
+import { Loader } from '@/shared/ui/Loader'
+import { SortDirection, UserBlockStatus } from '@/types'
+import { Input, Pagination, Select } from '@funnyteam/ui-kit'
+
+import s from './UsersList.module.scss'
+
+import { UsersListTable } from './UsersListTable'
+export type SortByType = 'createdAt' | 'userName'
+
+export const UsersList = () => {
+  const [sortBy, setSortBy] = useState<SortByType>('createdAt')
+  const [sortDirection, setSortDirection] = useState<SortDirection>(SortDirection.Desc)
+  const [usersStatus, setUsersStatus] = useState<UserBlockStatus>(UserBlockStatus.All)
+  const [pageNumber, setPageNumber] = useState<number>(1)
+  const [pageSize, setPageSize] = useState<number>(8)
+  const [searchTerm, setSearch] = useState<string>('')
+  const debounceValue = useDebounce(searchTerm, 500)
+  const { data, error, loading, refetch } = useGetAllUsersQuery({
+    variables: {
+      pageNumber,
+      pageSize,
+      searchTerm: debounceValue || '',
+      sortBy,
+      sortDirection,
+      statusFilter: usersStatus,
+    },
+  })
+
+  const usersList = data?.getUsers.users
+  const usersCount = data?.getUsers.pagination.totalCount
+  const { text } = useTranslation()
+  const t = text.pages.usersList.select
+
+  const selectOptions = [
+    { label: t.notSelected, value: UserBlockStatus.All },
+    { label: t.blocked, value: UserBlockStatus.Blocked },
+    { label: t.notBlocked, value: UserBlockStatus.Unblocked },
+  ]
+
+  const handlePageSize = (pageSize: string) => {
+    setPageSize(Number(pageSize))
+    setPageNumber(1)
+  }
+
+  const handleIsBlocked = (value: string) => {
+    setPageNumber(1)
+    setUsersStatus(prevState => value as UserBlockStatus)
+  }
+  const handleSearch = (value: string) => {
+    setPageNumber(1)
+    setSearch(prevState => value)
+  }
+
+  const handleDirectionChange = (sortParams: {
+    newDirection: SortDirection
+    newSortBy: SortByType
+  }) => {
+    setSortBy(sortParams.newSortBy)
+    setSortDirection(sortParams.newDirection)
+  }
+
+  return (
+    <>
+      <main>
+        <div className={s.wrapper}>
+          <div className={s.filters}>
+            <div className={s.filtersInput}>
+              <Input
+                onValueChange={handleSearch}
+                placeholder={'Search'}
+                type={'search'}
+                value={searchTerm}
+              />
+            </div>
+            <Select onValueChange={handleIsBlocked} options={selectOptions} value={usersStatus} />
+          </div>
+          {loading && <Loader />}
+          {usersList && (
+            <div>
+              <UsersListTable
+                direction={sortDirection}
+                onDirectionChange={handleDirectionChange}
+                refetchUsers={refetch}
+                sortBy={sortBy}
+                users={usersList}
+              />
+              <div className={s.pagination}>
+                <Pagination
+                  currentPage={pageNumber}
+                  onChangePage={setPageNumber}
+                  onValueChange={handlePageSize}
+                  options={PAGINATION_OPTIONS}
+                  pageSize={pageSize}
+                  totalCount={usersCount}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+    </>
+  )
+}
